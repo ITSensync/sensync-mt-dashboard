@@ -1,5 +1,6 @@
 "use client";
 import { ThemeToggleButton } from "@/components/common/ThemeToggleButton";
+import DeviceButton from "@/components/header/DeviceButtton";
 // import NotificationDropdown from "@/components/header/NotificationDropdown";
 import UserDropdown from "@/components/header/UserDropdown";
 import { useSidebar } from "@/context/SidebarContext";
@@ -83,7 +84,9 @@ const AppHeader: React.FC = () => {
           </button>
 
           <Link href="/" className="lg:hidden">
-            <h1 className="text-2xl text-brand-500 font-bold">Sparing Admin</h1>
+            <h1 className="text-2xl text-brand-500 font-bold">
+              Sensync Maitenance
+            </h1>
           </Link>
 
           <button
@@ -155,6 +158,7 @@ const AppHeader: React.FC = () => {
             {/* <!-- Notification Menu Area --> */}
           </div>
           {/* <!-- User Area --> */}
+          <DeviceButton />
           <UserDropdown />
         </div>
       </div>

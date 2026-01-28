@@ -5,6 +5,14 @@ layer(base);
 @plugin "daisyui";
 
 
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiper-slide {
+  height: auto;
+}
 
 
 @custom-variant dark (&:is(.dark *));

@@ -45,7 +45,7 @@ export default function SignInForm() {
       }); */
       setSuccess("Login Successfull!");
       setTimeout(() => {
-        router.push(process.env.LOCATION !== 'server' ? "/" : "/adjusment" );
+        router.push("/device");
       }, 2000);
     } else {
       setSuccess(null);

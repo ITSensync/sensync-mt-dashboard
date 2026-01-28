@@ -45,7 +45,7 @@ const navItems: NavItem[] = [
   },
 ];
 
-const idDevice = await getIdDevice();
+// const idDevice = await getIdDevice();
 
 const navItemsServer: NavItem[] = [
   {
@@ -89,6 +89,17 @@ const othersItems: NavItem[] = [
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
+
+  const [idDevice, setIdDevice] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const fetchIdDevice = async () => {
+      const id = await getIdDevice();
+      setIdDevice(id);
+    };
+
+    fetchIdDevice();
+  }, []);
 
   const renderMenuItems = (
     navItems: NavItem[],
@@ -300,7 +311,7 @@ const AppSidebar: React.FC = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <div className="flex flex-col items-center">
               <h1 className="text-2xl text-brand-500 font-bold">
-                Sparing Admin
+                Sensync Maintenance
               </h1>
               <p className="text-md text-brand-400">{idDevice}</p>
               {/* <Image
