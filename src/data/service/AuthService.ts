@@ -11,7 +11,7 @@ export class AuthService {
     });
   }
 
-  authAdjust = (authBody: any) => {
+  authMt = (authBody: any) => {
     return this.instance
       .post("/login", authBody)
       .then((res) => {

@@ -31,7 +31,7 @@ export default function SignInForm() {
       return;
     }
 
-    const response = await authService.authAdjust({ username, password });
+    const response = await authService.authMt({ username, password });
     if (response.status === 200) {
       setError(null);
       // sessionStorage.setItem("auth_token", response.access_token);
@@ -39,10 +39,10 @@ export default function SignInForm() {
         expires: 1 / 24,
         path: "/",
       });
-      Cookies.set("id_device", response.id_device, {
+      /* Cookies.set("id_device", response.id_device, {
         expires: 1 / 24,
         path: "/",
-      });
+      }); */
       setSuccess("Login Successfull!");
       setTimeout(() => {
         router.push(process.env.LOCATION !== 'server' ? "/" : "/adjusment" );

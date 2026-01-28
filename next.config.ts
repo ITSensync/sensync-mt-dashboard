@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   env: {
+    MT_API_URL: process.env.MT_API_URL,
     API_URL: process.env.API_URL,
     HOST_URL: process.env.HOST_URL,
     LOCATION: process.env.LOCATION,
