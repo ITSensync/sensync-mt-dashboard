@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 import MaintenanceChart from "@/components/charts/line/MaintenenaceChart";
 
 export const metadata: Metadata = {
-  title: "Sparing Admin Dashboard",
+  title: "Sensync Maintenance Dashboard",
   description: "This is Next.js Home for TailAdmin Dashboard Template",
 };
 

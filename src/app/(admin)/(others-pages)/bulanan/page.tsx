@@ -6,7 +6,7 @@ import { unauthorized } from "next/navigation";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Sparing Admin Dashboard | Laporan Bulanan",
+  title: "Sensync Maintenance Dashboard | Laporan Bulanan",
   description: "This is Next.js Blank Page TailAdmin Dashboard Template",
 };
 
