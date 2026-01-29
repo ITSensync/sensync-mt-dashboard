@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   {
     icon: <FileIcon />,
     name: "Generate BA",
-    path: "/maintenance-report",
+    path: "/generate",
   },
 ];
 
@@ -49,7 +49,7 @@ const navItemsAlternate: NavItem[] = [
   {
     icon: <FileIcon />,
     name: "Generate BA",
-    path: "/maintenance-report",
+    path: "/generate",
   },
 ];
 
