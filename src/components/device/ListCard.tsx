@@ -4,6 +4,7 @@ import React from "react";
 import CardDevice from "./CardDevice";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { ADJUSMENT_ALLOWED_DEVICES } from "@/lib/allowedDevice";
 
 const listSparing = [
   {
@@ -82,7 +83,11 @@ export default function ListCard() {
       path: "/",
     });
 
-    router.push("/adjusment");
+    if (ADJUSMENT_ALLOWED_DEVICES.includes(id)) {
+      router.push("/adjusment");
+    } else {
+      router.push("/changenote");
+    }
   };
 
   return (

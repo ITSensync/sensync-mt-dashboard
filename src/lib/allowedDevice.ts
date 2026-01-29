@@ -1,0 +1,1 @@
+export const ADJUSMENT_ALLOWED_DEVICES = ["sparing08", "sparing12", "sparing13"];

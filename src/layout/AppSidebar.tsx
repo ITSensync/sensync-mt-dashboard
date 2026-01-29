@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
-  CalenderIcon,
   ChevronDownIcon,
   FileIcon,
   HorizontaLDots,
@@ -13,6 +12,7 @@ import {
   TaskIcon,
 } from "../icons/index";
 import { getIdDevice } from "@/lib/sessions";
+import { ADJUSMENT_ALLOWED_DEVICES } from "@/lib/allowedDevice";
 // import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
@@ -24,36 +24,44 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <TaskIcon />,
-    name: "Laporan Harian",
-    path: "/harian",
-  },
-  {
-    icon: <CalenderIcon />,
-    name: "Laporan Bulanan",
-    path: "/bulanan",
-  },
-  {
     icon: <PencilIcon />,
     name: "Adjusment",
     path: "/adjusment",
   },
   {
+    icon: <TaskIcon />,
+    name: "Change Note",
+    path: "/changenote",
+  },
+  {
     icon: <FileIcon />,
-    name: "Maintenance Report",
+    name: "Generate BA",
+    path: "/maintenance-report",
+  },
+];
+
+const navItemsAlternate: NavItem[] = [
+  {
+    icon: <TaskIcon />,
+    name: "Change Note",
+    path: "/changenote",
+  },
+  {
+    icon: <FileIcon />,
+    name: "Generate BA",
     path: "/maintenance-report",
   },
 ];
 
 // const idDevice = await getIdDevice();
 
-const navItemsServer: NavItem[] = [
+/* const navItemsServer: NavItem[] = [
   {
     icon: <PencilIcon />,
     name: "Adjusment",
     path: "/adjusment",
   },
-];
+]; */
 
 const othersItems: NavItem[] = [
   // {
@@ -103,7 +111,7 @@ const AppSidebar: React.FC = () => {
 
   const renderMenuItems = (
     navItems: NavItem[],
-    menuType: "main" | "others"
+    menuType: "main" | "others",
   ) => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
@@ -232,7 +240,7 @@ const AppSidebar: React.FC = () => {
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
+    {},
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -298,8 +306,8 @@ const AppSidebar: React.FC = () => {
           isExpanded || isMobileOpen
             ? "w-[290px]"
             : isHovered
-            ? "w-[290px]"
-            : "w-[90px]"
+              ? "w-[290px]"
+              : "w-[90px]"
         }
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0`}
@@ -358,8 +366,10 @@ const AppSidebar: React.FC = () => {
                 )}
               </h2>
               {renderMenuItems(
-                process.env.LOCATION !== "server" ? navItems : navItemsServer,
-                "main"
+                ADJUSMENT_ALLOWED_DEVICES.includes(idDevice || "")
+                  ? navItems
+                  : navItemsAlternate,
+                "main",
               )}
             </div>
 
