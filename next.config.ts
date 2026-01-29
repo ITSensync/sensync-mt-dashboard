@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
     authInterrupts: true,
   },
 
-  /* async rewrites() {
+  async rewrites() {
     if (process.env.LOCATION !== "server") {
       return [
         {
@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
     } else {
       return [];
     }
-  }, */
+  },
 };
 
 export default nextConfig;
