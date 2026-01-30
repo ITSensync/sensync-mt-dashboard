@@ -1,4 +1,4 @@
-export type Adjusment = {
+export type Adjustment = {
   id: string;
   type: string;
   condition: string;

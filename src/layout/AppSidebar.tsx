@@ -25,8 +25,8 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <PencilIcon />,
-    name: "Adjusment",
-    path: "/adjusment",
+    name: "Adjustment",
+    path: "/adjustment",
   },
   {
     icon: <TaskIcon />,

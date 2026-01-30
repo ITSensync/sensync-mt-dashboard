@@ -8,7 +8,6 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { Adjusment } from "../types/Adjusment";
 import DeleteModal from "../ui/modal/DeleteModal";
 import {
   closestCenter,
@@ -28,22 +27,23 @@ import { CSS } from "@dnd-kit/utilities";
 import Loading from "../ui/loading/Loading";
 import { ApiError } from "../types/ApiError";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
+import { Adjustment } from "../types/Adjustment";
 
 export default function AdjusmentTable({
   handleEditedData,
   handleFormShowing,
 }: {
-  handleEditedData: (editedData: Adjusment) => void;
+  handleEditedData: (editedData: Adjustment) => void;
   handleFormShowing: (state: boolean) => void;
 }) {
-  const [initAdjusmentData, setInitAdjusmentData] = useState<Adjusment[]>([]);
+  const [initAdjusmentData, setInitAdjusmentData] = useState<Adjustment[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isToastOpen, setIsToastOpen] = useState(false);
   const [errorData, setErrorData] = useState<ApiError>({
     code: 0,
     message: "",
   });
-  const [deletedData, setDeletedData] = useState<Adjusment>();
+  const [deletedData, setDeletedData] = useState<Adjustment>();
   const [rows, setRows] = useState(initAdjusmentData);
   const sensors = useSensors(useSensor(PointerSensor));
 
@@ -76,7 +76,7 @@ export default function AdjusmentTable({
     const idDevice = await getIdDevice();
     const response = await adjusmentService.getAllData(authToken, idDevice);
     if (response.data) {
-      const adjusmentData: Adjusment[] = response.data;
+      const adjusmentData: Adjustment[] = response.data;
       setInitAdjusmentData(adjusmentData);
     } else {
       setErrorData({
@@ -89,12 +89,12 @@ export default function AdjusmentTable({
     setIsLoading(false);
   };
 
-  const handleBtnEdit = (isShow: boolean, editedData: Adjusment) => {
+  const handleBtnEdit = (isShow: boolean, editedData: Adjustment) => {
     handleEditedData(editedData);
     handleFormShowing(isShow);
   };
 
-  const handleDeleteBtn = (adjusmentData: Adjusment) => {
+  const handleDeleteBtn = (adjusmentData: Adjustment) => {
     setDeletedData(adjusmentData);
     (document.getElementById("delete_modal") as HTMLDialogElement).showModal();
   };
@@ -316,10 +316,10 @@ function SortableRow({
   handleBtnEdit,
   handleBtnDelete,
 }: {
-  data: Adjusment;
+  data: Adjustment;
   handleStatusChange: (id: string, checked: boolean) => void;
-  handleBtnEdit: (isShow: boolean, data: Adjusment) => void;
-  handleBtnDelete: (data: Adjusment) => void;
+  handleBtnEdit: (isShow: boolean, data: Adjustment) => void;
+  handleBtnDelete: (data: Adjustment) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: data.id });

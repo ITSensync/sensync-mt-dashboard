@@ -3,13 +3,13 @@
 // import React, { useState } from "react";
 // import { ApiError } from "../types/ApiError";
 // import AlertToast from "./AlertToast";
-import { Adjusment } from "@/components/types/Adjusment";
 import ModalLoading from "./ModalLoading";
 import { useState } from "react";
 import { ApiError } from "@/components/types/ApiError";
 import { adjusmentService } from "@/data/service";
 import AlertToast from "../alert/AlertToast";
 import { getAuthToken } from "@/lib/sessions";
+import { Adjustment } from "@/components/types/Adjustment";
 
 export default function DeleteModal({
   type,
@@ -17,7 +17,7 @@ export default function DeleteModal({
   onDelete,
 }: {
   type: string;
-  adjusmentData: Adjusment;
+  adjusmentData: Adjustment;
   onDelete: (id: string) => void;
 }) {
   const [isLoading, setIsLoading] = useState(false);

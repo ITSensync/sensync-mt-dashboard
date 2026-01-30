@@ -2,7 +2,6 @@
 import React, { useActionState, useEffect, useState } from "react";
 import ComponentCard from "../../common/ComponentCard";
 import Input from "../input/InputField";
-import { Adjusment } from "@/components/types/Adjusment";
 import Alert from "@/components/ui/alert/Alert";
 import {
   createInitAction,
@@ -13,6 +12,7 @@ import ZodErrors from "@/components/ui/alert/ZodErrors";
 import Label from "../Label";
 import ModalLoading from "@/components/ui/modal/ModalLoading";
 import SuccessModal from "@/components/ui/modal/SuccessModal";
+import { Adjustment } from "@/components/types/Adjustment";
 
 const INITIAL_STATE = {
   data: null,
@@ -25,7 +25,7 @@ export default function FormAdjusment({
   onClose,
 }: {
   initialSensorName: string;
-  initAdjusmentData?: Adjusment;
+  initAdjusmentData?: Adjustment;
   getIsFormInitShowingState: (state: boolean) => void;
   onClose?: () => void;
 }) {
@@ -43,7 +43,7 @@ export default function FormAdjusment({
     code: 0,
     message: "",
   });
-  const [formInitState, setFormInitState] = useState<Adjusment>({
+  const [formInitState, setFormInitState] = useState<Adjustment>({
     id: initAdjusmentData?.id || "",
     type: initAdjusmentData?.type || "",
     condition: initAdjusmentData?.condition || "",

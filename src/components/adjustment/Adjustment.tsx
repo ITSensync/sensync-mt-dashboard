@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Button from "../ui/button/Button";
 import { PlusIcon } from "@/icons";
 import FormAdjusment from "../form/example-form/FormAdjusment";
-import { Adjusment } from "../types/Adjusment";
-import AdjusmentTable from "../tables/AdjusmentTable";
+import AdjusmentTable from "../tables/AdjustmentTable";
+import { Adjustment } from "../types/Adjustment";
 
 export default function AdjusmentPage() {
   const [editedInitData, setEditedInitData] = useState<any>(null);
@@ -15,7 +15,7 @@ export default function AdjusmentPage() {
     setIsFormInitShow(state);
   };
 
-  const getEditedInitData = (editedData: Adjusment) => {
+  const getEditedInitData = (editedData: Adjustment) => {
     setEditedInitData(editedData);
   };
 
