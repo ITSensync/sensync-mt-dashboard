@@ -8,9 +8,17 @@ import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { ApiError } from "../types/ApiError";
 import { changenoteService } from "@/data/service";
 import { formatCustomDate } from "@/lib/formatDate";
+import DeleteModalChangenote from "../ui/modal/DeleteModalChangenote";
 
-export default function ChangenoteTable() {
+export default function ChangenoteTable({
+  getEditedData,
+  handleFormShowing,
+}: {
+  getEditedData: (editedData: Changenote) => void;
+  handleFormShowing: (state: boolean) => void;
+}) {
   const [changenotes, setChangenotes] = useState<Changenote[]>([]);
+  const [deletedData, setDeletedData] = useState<Changenote>();
   const [isLoading, setIsLoading] = useState(false);
   const [isToastOpen, setIsToastOpen] = useState(false);
   const [errorData, setErrorData] = useState<ApiError>({
@@ -42,12 +50,30 @@ export default function ChangenoteTable() {
     setIsLoading(false);
   };
 
+  const handleEditBtn = (editedData: Changenote, isShow: boolean) => {
+    getEditedData(editedData);
+    handleFormShowing(isShow);
+  };
+
+  const handleDeleteBtn = (changenoteData: Changenote) => {
+    setDeletedData(changenoteData);
+    (
+      document.getElementById("delete_modal_changenote") as HTMLDialogElement
+    ).showModal();
+  };
+
+  const removeDataFromState = (id: string) => {
+    setChangenotes((prevData) =>
+      prevData.filter((item) => String(item.id) !== id),
+    );
+  };
+
   return (
     <div className="w-full">
-      {/* <DeleteModalReport
-        reportData={deletedData!}
+      <DeleteModalChangenote
+        changenoteData={deletedData!}
         onDelete={removeDataFromState}
-      /> */}
+      />
       {isToastOpen && (
         <div className="toast text-white mb-10">
           <div className="alert alert-error text-white">
@@ -135,7 +161,7 @@ export default function ChangenoteTable() {
                         <button
                           className="tooltip tooltip-info mr-2"
                           data-tip="Edit"
-                          // onClick={() => handleEditBtn(report)}
+                          onClick={() => handleEditBtn(changenote, true)}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +177,7 @@ export default function ChangenoteTable() {
                         <button
                           className="tooltip tooltip-error"
                           data-tip="Delete"
-                          // onClick={() => handleDeleteBtn(report)}
+                          onClick={() => handleDeleteBtn(changenote)}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -62,4 +62,56 @@ export class ChangenoteService {
         }
       });
   };
+
+  edit = (body: any, id: any, authToken: any) => {
+    return this.instance
+      .patch(`/${id}`, body, {
+        headers: authToken,
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch(function (error) {
+        if (error.response) {
+          const errorResponse = {
+            status: error.response.data.status,
+            message: error.response.data.message,
+          };
+          return errorResponse;
+        } else {
+          const errorResponse = {
+            status: error.code,
+            message: error.message,
+            name: error.name,
+          };
+          return errorResponse;
+        }
+      });
+  };
+
+  delete = (id: any, authToken: any) => {
+    return this.instance
+      .delete(`/${id}`, {
+        headers: authToken,
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch(function (error) {
+        if (error.response) {
+          const errorResponse = {
+            status: error.response.data.status,
+            message: error.response.data.message,
+          };
+          return errorResponse;
+        } else {
+          const errorResponse = {
+            status: error.code,
+            message: error.message,
+            name: error.name,
+          };
+          return errorResponse;
+        }
+      });
+  };
 }

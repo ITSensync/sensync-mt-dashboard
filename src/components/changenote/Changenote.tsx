@@ -6,8 +6,10 @@ import React, { useState } from "react";
 import ChangenoteTable from "./ChangenoteTable";
 import UnderDev from "@/layout/UnderDev";
 import FormChangenote from "./FormChangenote";
+import { Changenote } from "../types/Changenote";
+// import { Changenote } from "../types/Changenote";
 
-export default function Changenote() {
+export default function ChangenotePage() {
   const [editedInitData, setEditedInitData] = useState<any>(null);
   const [isFormInitShow, setIsFormInitShow] = useState(false);
 
@@ -15,9 +17,9 @@ export default function Changenote() {
     setIsFormInitShow(state);
   };
 
-  /* const getEditedInitData = (editedData: Adjusment) => {
+  const getEditedInitData = (editedData: Changenote) => {
     setEditedInitData(editedData);
-  }; */
+  };
 
   const handleFormClose = () => {
     setEditedInitData(null);
@@ -27,7 +29,11 @@ export default function Changenote() {
     <>
       {isFormInitShow ? (
         // <UnderDev />
-        <FormChangenote getIsFormInitShowingState={getFormInitShowingState} onClose={handleFormClose}/>
+        <FormChangenote
+          getIsFormInitShowingState={getFormInitShowingState}
+          onClose={handleFormClose}
+          initChangenoteData={editedInitData}
+        />
       ) : (
         /* {
           
@@ -50,7 +56,10 @@ export default function Changenote() {
               Add
             </Button>
           </div>
-          <ChangenoteTable />
+          <ChangenoteTable
+            getEditedData={getEditedInitData}
+            handleFormShowing={getFormInitShowingState}
+          />
           {/* <AdjusmentTable
             handleEditedData={getEditedInitData}
             handleFormShowing={getFormInitShowingState}

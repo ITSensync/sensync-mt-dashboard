@@ -10,7 +10,9 @@ import Input from "../form/input/InputField";
 import Label from "../form/Label";
 import ZodErrors from "../ui/alert/ZodErrors";
 import TextArea from "../form/input/TextArea";
-import { addChangenoteAction } from "@/data/actions/FormChangenoteActions";
+import { addChangenoteAction, editChangenoteAction } from "@/data/actions/FormChangenoteActions";
+import { format } from "path";
+import { formatCustomDate } from "@/lib/formatDate";
 
 const INITIAL_STATE = {
   data: null,
@@ -32,7 +34,7 @@ export default function FormChangenote({
     INITIAL_STATE,
   );
   const [formEditState, formEditAction] = useActionState(
-    addChangenoteAction,
+    editChangenoteAction,
     INITIAL_STATE,
   );
   const [apiErrorData, setApiErrorData] = useState<ApiError>({
@@ -75,6 +77,7 @@ export default function FormChangenote({
     // setSensorName(initialSensorName);
 
     if (initChangenoteData) {
+      console.log(initChangenoteData)
       setFormInitState({
         id: initChangenoteData.id,
         id_device: initChangenoteData.id_device || "",
@@ -167,7 +170,7 @@ export default function FormChangenote({
                 type="date"
                 name="tanggal"
                 placeholder="John Doe"
-                defaultValue={formInitState.createdAt}
+                defaultValue={formatCustomDate(formInitState.createdAt, "yyyy-MM-dd")}
                 onChange={handleInputChange}
                 required={true}
               />
