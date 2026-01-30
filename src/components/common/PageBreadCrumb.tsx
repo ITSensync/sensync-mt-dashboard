@@ -2,10 +2,12 @@ import Link from "next/link";
 import React from "react";
 
 interface BreadcrumbProps {
-  pageTitle: string;
+  pageTitle: string
+  level1: string
+  level2?: string
 }
 
-const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle }) => {
+const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle, level1, level2 }) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
       <h2
@@ -41,8 +43,33 @@ const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle }) => {
             </Link>
           </li>
           <li className="text-sm text-gray-800 dark:text-white/90">
-            {pageTitle}
+            {level1}
           </li>
+          {level2 && (
+            <>
+              <li className="text-sm text-gray-800 dark:text-white/90">
+                <svg
+                  className="mx-2 inline-block"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5 9L7.5 6L4.5 3"
+                    stroke="#9CA3AF"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </li>
+              <li className="text-sm text-gray-800 dark:text-white/90">
+                {level2}
+              </li>
+            </>
+          )}
         </ol>
       </nav>
     </div>
