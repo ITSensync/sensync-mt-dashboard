@@ -303,7 +303,8 @@ layer(base);
   input[type="time"]::-webkit-inner-spin-button,
   input[type="date"]::-webkit-calendar-picker-indicator,
   input[type="time"]::-webkit-calendar-picker-indicator {
-    display: none;
+    display: block;
+    cursor: pointer;
     -webkit-appearance: none;
   }
 }
@@ -491,7 +492,7 @@ layer(base);
 
 .input-date-icon::-webkit-inner-spin-button,
 .input-date-icon::-webkit-calendar-picker-indicator {
-  opacity: 0;
+  opacity: 1;
   -webkit-appearance: none;
 }
 

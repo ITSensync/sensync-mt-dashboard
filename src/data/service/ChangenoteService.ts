@@ -14,7 +14,33 @@ export class ChangenoteService {
   getAll = (idDevice: any, authToken: any) => {
     return this.instance
       .get("?id_device=" + idDevice, {
-        headers: authToken
+        headers: authToken,
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch(function (error) {
+        if (error.response) {
+          const errorResponse = {
+            status: error.response.data.status,
+            message: error.response.data.message,
+          };
+          return errorResponse;
+        } else {
+          const errorResponse = {
+            status: error.code,
+            message: error.message,
+            name: error.name,
+          };
+          return errorResponse;
+        }
+      });
+  };
+
+  add = (body: any, authToken: any) => {
+    return this.instance
+      .post("/", body, {
+        headers: authToken,
       })
       .then((res) => {
         return res.data;

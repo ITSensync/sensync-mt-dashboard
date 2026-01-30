@@ -56,6 +56,12 @@ export const formCreateInitSchema = z.object({
   ]),
 });
 
+export const formChangenoteSchema = z.object({
+  tanggal: z.string().min(1).trim(),
+  teknisi: z.string().min(1).trim(),
+  catatan: z.string().min(1).trim(),
+})
+
 export const formReportSchema = z.object({
   operator_name: z.string().trim(),
   detail: z.string().min(1).trim(),

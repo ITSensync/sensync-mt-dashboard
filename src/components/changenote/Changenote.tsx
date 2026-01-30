@@ -5,6 +5,7 @@ import Button from "../ui/button/Button";
 import React, { useState } from "react";
 import ChangenoteTable from "./ChangenoteTable";
 import UnderDev from "@/layout/UnderDev";
+import FormChangenote from "./FormChangenote";
 
 export default function Changenote() {
   const [editedInitData, setEditedInitData] = useState<any>(null);
@@ -25,7 +26,8 @@ export default function Changenote() {
   return (
     <>
       {isFormInitShow ? (
-        <UnderDev />
+        // <UnderDev />
+        <FormChangenote getIsFormInitShowingState={getFormInitShowingState} onClose={handleFormClose}/>
       ) : (
         /* {
           
