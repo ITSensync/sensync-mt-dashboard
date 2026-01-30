@@ -23,16 +23,18 @@ const nextConfig: NextConfig = {
   },
 
   async rewrites() {
-    if (process.env.LOCATION !== "server") {
+    const hostUrl = process.env.HOST_URL;
+
+    if (process.env.LOCATION !== "server" && hostUrl) {
       return [
         {
           source: "/api/:path*",
-          destination: `${process.env.HOST_URL}/api/:path*`, // bridge default docker linux
+          destination: `${hostUrl}/api/:path*`,
         },
       ];
-    } else {
-      return [];
     }
+
+    return [];
   },
 };
 
