@@ -3,7 +3,7 @@ import React from "react";
 
 interface BreadcrumbProps {
   pageTitle: string
-  level1: string
+  level1?: string
   level2?: string
 }
 
@@ -43,7 +43,7 @@ const PageBreadcrumb: React.FC<BreadcrumbProps> = ({ pageTitle, level1, level2 }
             </Link>
           </li>
           <li className="text-sm text-gray-800 dark:text-white/90">
-            {level1}
+            {level1 || "-"}
           </li>
           {level2 && (
             <>
