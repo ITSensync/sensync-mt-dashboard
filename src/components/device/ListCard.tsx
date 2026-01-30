@@ -84,7 +84,7 @@ export default function ListCard() {
     });
 
     if (ADJUSMENT_ALLOWED_DEVICES.includes(id)) {
-      router.push("/adjusment");
+      router.push("/adjustment");
     } else {
       router.push("/changenote");
     }
