@@ -1,5 +1,6 @@
-import { Metadata } from 'next';
-import React from 'react'
+import UnderDev from "@/layout/UnderDev";
+import { Metadata } from "next";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Sensync Maintenance Dashboard | Generate BA",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 
 export default function page() {
   return (
-    <div>Ini halaman Generate BA</div>
-  )
+    // <div>Ini halaman Generate BA</div>
+    <UnderDev />
+  );
 }
