@@ -60,10 +60,25 @@ export const formChangenoteSchema = z.object({
   tanggal: z.string().min(1).trim(),
   teknisi: z.string().min(1).trim(),
   catatan: z.string().min(1).trim(),
-})
+});
 
 export const formReportSchema = z.object({
   operator_name: z.string().trim(),
   detail: z.string().min(1).trim(),
   next_step: z.string().min(1).trim(),
+});
+
+const kalibrasiItem = z.object({
+  larutan: z.string().min(1),
+  nilai: z.coerce.number(),
+  keterangan: z.string().optional(),
+});
+
+export const preventifKalibrasiSchema = z.object({
+  kalibrasi: z.object({
+    cod: z.array(kalibrasiItem),
+    ph: z.array(kalibrasiItem),
+    tss: z.array(kalibrasiItem),
+    nh3n: z.array(kalibrasiItem),
+  }),
 });
