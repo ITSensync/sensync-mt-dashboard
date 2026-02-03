@@ -36,7 +36,7 @@ export default function SignInForm() {
       setError(null);
       // sessionStorage.setItem("auth_token", response.access_token);
       Cookies.set("auth_token", response.access_token, {
-        expires: 1 / 24,
+        expires: 12 / 24,
         path: "/",
       });
       /* Cookies.set("id_device", response.id_device, {

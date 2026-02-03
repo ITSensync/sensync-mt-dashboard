@@ -79,7 +79,7 @@ export default function ListCard() {
 
   const handleClickCard = (id: string) => {
     Cookies.set("id_device", id, {
-      expires: 1 / 24,
+      expires: 12 / 24,
       path: "/",
     });
 
