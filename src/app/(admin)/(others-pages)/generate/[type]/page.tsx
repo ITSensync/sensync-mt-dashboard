@@ -1,6 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import FormKorektif from "@/components/generate/FormKorektif";
 import FormPreventif from "@/components/generate/FormPreventif";
+import FormPreventifBase from "@/components/generate/FormPreventifBase";
 import UnderDev from "@/layout/UnderDev";
 import { generateSiteName } from "@/lib/generateSiteName";
 import { Metadata } from "next";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function page({ params }: { params: { type: string } }) {
   const idSite = (await cookies()).get("id_device")?.value;
-  const { type } = params;
+  const { type } = await params;
 
   return (
     <div>
@@ -25,7 +26,7 @@ export default async function page({ params }: { params: { type: string } }) {
       />
       {type === "preventif" ? (
         idSite?.includes("base") ? (
-          <UnderDev />
+          <FormPreventifBase />
         ) : (
           <FormPreventif />
         )
