@@ -64,6 +64,16 @@ const listSparing = [
     site: "SSM",
     img: "",
   },
+  {
+    id: "basebdg",
+    site: "DLH Kota Bandung",
+    img: "",
+  },
+  {
+    id: "basekrwg",
+    site: "DLH Kab. Karawang",
+    img: "",
+  },
 ];
 
 export const generateSiteName = (siteId: string) => {
