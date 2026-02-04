@@ -23,7 +23,15 @@ export default async function page({ params }: { params: { type: string } }) {
         level1="Jenis Pemeliharaan"
         level2={`Form ${type.replace(/\b\w/g, (c) => c.toUpperCase())}`}
       />
-      {type === "preventif" ? <FormPreventif /> : <UnderDev />}
+      {type === "preventif" ? (
+        idSite?.includes("base") ? (
+          <UnderDev />
+        ) : (
+          <FormPreventif />
+        )
+      ) : (
+        <UnderDev />
+      )}
       {/* <UnderDev /> */}
     </div>
   );
