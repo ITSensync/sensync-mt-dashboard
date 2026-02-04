@@ -31,7 +31,7 @@ export default async function page({ params }: { params: { type: string } }) {
           <FormPreventif />
         )
       ) : (
-        <UnderDev />
+        <FormKorektif />
       )}
       {/* <UnderDev /> */}
     </div>

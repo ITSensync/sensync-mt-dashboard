@@ -21,7 +21,7 @@ export default function RootLayout({
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!pathname.startsWith("/generate")) {
+    if (pathname == "/generate") {
       sessionStorage.removeItem("maintenance-form");
     }
   }, [pathname]);
