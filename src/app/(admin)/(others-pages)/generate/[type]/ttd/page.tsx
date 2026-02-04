@@ -1,4 +1,5 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import SectionTTD from "@/components/generate/SectionTTD";
 import UnderDev from "@/layout/UnderDev";
 import { generateSiteName } from "@/lib/generateSiteName";
 import { Metadata } from "next";
@@ -20,7 +21,8 @@ export default async function page() {
         level1="Jenis Pemeliharaan"
         level2={`TTD`}
       />
-      <UnderDev />
+      {/* <UnderDev /> */}
+      <SectionTTD/>
     </div>
   );
 }

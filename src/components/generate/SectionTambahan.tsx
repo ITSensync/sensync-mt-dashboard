@@ -11,12 +11,12 @@ import { useRouter } from "next/navigation";
 
 export default function SectionTambahan() {
   const { register } = useFormContext();
-  // const { trigger } = useFormContext();
+  const { trigger } = useFormContext();
   const router = useRouter();
 
   const handleNextButton = async () => {
-    // const valid = await trigger(); // validasi zod dulu
-    // if (!valid) return;
+    /* const valid = await trigger(); // validasi zod dulu
+    if (!valid) return; */
 
     router.push("/generate/preventif/ttd");
   };
@@ -56,7 +56,7 @@ export default function SectionTambahan() {
         />
       </fieldset>
       <div className="flex gap-2 justify-end mt-3">
-        <button type="submit" className="btn btn-success font-bold text-white" onClick={handleNextButton}>
+        <button type="button" className="btn btn-success font-bold text-white" onClick={handleNextButton}>
           Next
         </button>
       </div>

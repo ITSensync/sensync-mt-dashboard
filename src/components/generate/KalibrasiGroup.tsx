@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useFieldArray, useFormContext } from "react-hook-form";
@@ -55,7 +56,7 @@ export default function KalibrasiGroup({
         >
           {/* Larutan */}
           <SelectField
-            {...register(`kalibrasi.${index}.larutan`)}
+            {...register(`kalibrasi.${name}.${index}.larutan`)}
             className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
           >
             <option
@@ -109,7 +110,10 @@ export default function KalibrasiGroup({
           {/* Nilai */}
           <Input
             type="number"
-            {...register(`kalibrasi.${name}.${index}.nilai`)}
+            {...register(`kalibrasi.${name}.${index}.nilai`, {
+              required: true,
+              setValueAs: (v) => (v === "" ? undefined : Number(v)),
+            })}
             placeholder="Nilai"
           />
 

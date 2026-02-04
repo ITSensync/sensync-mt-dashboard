@@ -4,6 +4,7 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import ModulUtama from "./ModulForm";
 import ModulForm from "./ModulForm";
+import SectionPembacaanSensor from "./SectionPembacaanSensor";
 
 const modulUtama = [
   {
@@ -90,49 +91,7 @@ export default function SectionChecklist() {
       <ModulForm title="Modul Utama" dataText={modulUtama} />
       <ModulForm title="Modul Sensor" dataText={modulSensor} />
       {/* PEMBACAAN SENSOR FORM */}
-      <div className="grid grid-cols-1 gap-6">
-        <div className="col-span-full">
-          <div className="grid grid-cols-3 mb-4 text-gray-800 dark:text-white/90">
-            <p className="font-semibold text-lg">Pembacaan Sensor</p>
-          </div>
-          {sensor.map((item, index) => (
-            <div
-              key={index}
-              className="grid grid-cols-3 items-center py-2 gap-5 text-gray-700 dark:text-gray-400"
-            >
-              <p className="text-sm">{item.text}</p>
-              <div className="flex justify-center">
-                <Input
-                  type="text"
-                  name={`sebelum_${item.name}`}
-                  defaultValue={""}
-                  className="w-1/2"
-                  /* defaultValue={formatCustomDate(
-                  formInitState.createdAt,
-                  "yyyy-MM-dd",
-                )}
-                onChange={handleInputChange} */
-                  required={true}
-                />
-              </div>
-              <div className="flex justify-center">
-                <Input
-                  type="text"
-                  name={`sesudah_${item.name}`}
-                  defaultValue={""}
-                  className="w-1/2"
-                  /* defaultValue={formatCustomDate(
-                  formInitState.createdAt,
-                  "yyyy-MM-dd",
-                )}
-                onChange={handleInputChange} */
-                  required={true}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <SectionPembacaanSensor dataText={sensor} />
       <ModulForm title="Modul Pendukung" dataText={modulPendukung} />
       <ModulForm title="Pengiriman Data" dataText={pengirimanData} />
     </ComponentCard>

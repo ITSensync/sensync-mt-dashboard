@@ -24,6 +24,7 @@ export default function SectionDataPerangkat() {
     };
 
     fetchIdDevice();
+    setValue("nomor_ba", "11/BA/STI/I/2026");
   }, [setValue]);
 
   return (

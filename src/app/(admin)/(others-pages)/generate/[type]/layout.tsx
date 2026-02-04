@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function PreventifLayout({
@@ -8,14 +9,21 @@ export default function PreventifLayout({
   children: React.ReactNode;
 }) {
   const methods = useForm({
-    mode: "onChange",
-    defaultValues: {
-      nomor_ba: "11/BA/STI/I/2026",
-      site: "",
-      teknisi: "",
-      pengawas_lapangan: "",
-    },
+    defaultValues: JSON.parse(
+      sessionStorage.getItem("maintenance-form") || "{}",
+    ),
   });
+
+  const { watch } = methods;
+
+  // auto save
+  useEffect(() => {
+    const sub = watch((value) => {
+      sessionStorage.setItem("maintenance-form", JSON.stringify(value));
+    });
+
+    return () => sub.unsubscribe();
+  }, [watch]);
 
   return <FormProvider {...methods}>{children}</FormProvider>;
 }
