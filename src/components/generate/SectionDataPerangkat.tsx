@@ -4,7 +4,7 @@
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import { generateBANumber, generateSiteName } from "@/lib/generate";
+import { generateBANumber, generateSiteCity, generateSiteName } from "@/lib/generate";
 import { getIdDevice } from "@/lib/sessions";
 
 import ComponentCard from "../common/ComponentCard";
@@ -19,9 +19,11 @@ export default function SectionDataPerangkat() {
       const id = await getIdDevice();
 
       const site = generateSiteName(id || "");
+      const city = generateSiteCity(id || "");
 
       // ✅ set ke form (bukan defaultValue)
       setValue("site", site);
+      setValue("lokasi", city);
     };
 
     const fetchBANumber = async () => {
@@ -29,7 +31,7 @@ export default function SectionDataPerangkat() {
       console.log(nomorBa);
       setValue("nomor_ba", nomorBa);
     };
-   
+
     fetchBANumber();
     fetchIdDevice();
     // setValue("nomor_ba", "11/BA/STI/I/2026");
@@ -48,8 +50,7 @@ export default function SectionDataPerangkat() {
             <Input disabled {...register("nomor_ba")} />
           </fieldset>
 
-          <div className="grid grid-cols-3 gap-10 mt-4">
-            {/* Site */}
+          <div className="grid grid-cols-2 gap-10 mt-4">
             <fieldset className="fieldset w-full">
               <Label htmlFor="site">
                 Site <span className="text-red-500">*</span>
@@ -57,6 +58,24 @@ export default function SectionDataPerangkat() {
 
               <Input disabled {...register("site")} />
             </fieldset>
+            <fieldset className="fieldset w-full">
+              <Label htmlFor="site">
+                Lokasi <span className="text-red-500">*</span>
+              </Label>
+
+              <Input disabled {...register("lokasi")} />
+            </fieldset>
+          </div>
+
+          <div className="grid grid-cols-2 gap-10 mt-4">
+            {/* Site */}
+            {/* <fieldset className="fieldset w-full">
+              <Label htmlFor="site">
+                Site <span className="text-red-500">*</span>
+              </Label>
+
+              <Input disabled {...register("site")} />
+            </fieldset> */}
 
             {/* Teknisi */}
             <fieldset className="fieldset w-full">

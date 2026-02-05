@@ -5,76 +5,91 @@ const listSparing = [
   {
     id: "sparing01",
     site: "Gistex",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing02",
     site: "Indorama PWK",
+    city: "Purwakarta",
     img: "",
   },
   {
     id: "sparing03",
     site: "PMT",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing04",
     site: "Innojaya PDL",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing05",
     site: "Besland",
+    city: "Purwakarta",
     img: "",
   },
   {
     id: "sparing06",
     site: "Indotaisei",
+    city: "Purwakarta",
     img: "",
   },
   {
     id: "sparing07",
     site: "Daliatex",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing08",
     site: "Papyrus",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing09",
     site: "BCP",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing10",
     site: "Pangjaya",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing11",
     site: "LPA",
+    city: "Bekasi",
     img: "",
   },
   {
     id: "sparing12",
     site: "Kertas PDL",
+    city: "Bandung",
     img: "",
   },
   {
     id: "sparing13",
     site: "SSM",
+    city: "Purwakarta",
     img: "",
   },
   {
     id: "basebdg",
     site: "DLH Kota Bandung",
+    city: "Bandung",
     img: "",
   },
   {
     id: "basekrwg",
     site: "DLH Kab. Karawang",
+    city: "Karawang",
     img: "",
   },
 ];
@@ -83,6 +98,11 @@ export const generateSiteName = (siteId: string) => {
   const site = listSparing.find((sparing) => sparing.id === siteId);
   return site ? site.site : "Unknown";
 };
+
+export const generateSiteCity = (siteId: string) => {
+  const site = listSparing.find((sparing) => sparing.id === siteId);
+  return site ? site.city : "Unknown";
+}
 
 export const generateBANumber = async () => {
   const authToken = await getAuthToken();

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
+"use client";
 import React from "react";
 import SectionDataPerangkat from "./SectionDataPerangkat";
 import SectionInputKorektif from "./SectionInputKorektif";
@@ -8,42 +8,49 @@ import { useRouter } from "next/navigation";
 
 export default function FormKorektif() {
   const { handleSubmit } = useFormContext();
-    const router = useRouter();
-  
-    const onSubmit = async (data: any) => {
-      const formData = new FormData();
-  
-      Object.entries(data).forEach(([key, value]) => {
-        if (value instanceof FileList) {
-          Array.from(value).forEach((file) => formData.append(key, file));
-        } else if (typeof value === "object") {
-          formData.append(key, JSON.stringify(value));
-        } else {
-          formData.append(key, value as string);
-        }
-      });
-  
-      const debugObj: any = {};
-  
-      for (const [key, value] of formData.entries()) {
-        debugObj[key] = value;
-      }
-  
-      console.log(debugObj);
-  
-      // await fetch("/api/maintenance", {
-      //   method: "POST",
-      //   body: formData,
-      // });
-    };
-  
-    const handleBackBtn = () => {
-      // Logic to handle back action
-      router.back();
-    };
+  const router = useRouter();
+
+  // const onSubmit = async (data: any) => {
+  //   const formData = new FormData();
+
+  //   Object.entries(data).forEach(([key, value]) => {
+  //     if (value instanceof FileList) {
+  //       Array.from(value).forEach((file) => formData.append(key, file));
+  //     } else if (typeof value === "object") {
+  //       formData.append(key, JSON.stringify(value));
+  //     } else {
+  //       formData.append(key, value as string);
+  //     }
+  //   });
+
+  //   const debugObj: any = {};
+
+  //   for (const [key, value] of formData.entries()) {
+  //     debugObj[key] = value;
+  //   }
+
+  //   console.log(debugObj);
+
+  //   // await fetch("/api/maintenance", {
+  //   //   method: "POST",
+  //   //   body: formData,
+  //   // });
+  // };
+
+  const handleNextButton = async () => {
+    /* const valid = await trigger(); // validasi zod dulu
+        if (!valid) return; */
+
+    router.push("/generate/preventif/ttd");
+  };
+
+  const handleBackBtn = () => {
+    // Logic to handle back action
+    router.back();
+  };
 
   return (
-    <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit(onSubmit)}>
+    <form className="grid grid-cols-1 gap-4">
       <SectionDataPerangkat />
       <SectionInputKorektif title="Korektif Item" />
       <div className="w-full flex justify-end mt-2 gap-4">
@@ -55,10 +62,11 @@ export default function FormKorektif() {
           Back
         </button>
         <button
-          type="submit"
+          type="button"
           className="btn btn-lg btn-success font-bold text-white"
+          onClick={handleNextButton}
         >
-          Submit
+          Next
         </button>
       </div>
     </form>
