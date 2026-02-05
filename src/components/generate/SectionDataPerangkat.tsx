@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import { generateSiteName } from "@/lib/generateSiteName";
+import { generateBANumber, generateSiteName } from "@/lib/generate";
 import { getIdDevice } from "@/lib/sessions";
 
 import ComponentCard from "../common/ComponentCard";
@@ -23,8 +24,15 @@ export default function SectionDataPerangkat() {
       setValue("site", site);
     };
 
+    const fetchBANumber = async () => {
+      const nomorBa = await generateBANumber();
+      console.log(nomorBa);
+      setValue("nomor_ba", nomorBa);
+    };
+   
+    fetchBANumber();
     fetchIdDevice();
-    setValue("nomor_ba", "11/BA/STI/I/2026");
+    // setValue("nomor_ba", "11/BA/STI/I/2026");
   }, [setValue]);
 
   return (
@@ -40,7 +48,7 @@ export default function SectionDataPerangkat() {
             <Input disabled {...register("nomor_ba")} />
           </fieldset>
 
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-3 gap-10 mt-4">
             {/* Site */}
             <fieldset className="fieldset w-full">
               <Label htmlFor="site">

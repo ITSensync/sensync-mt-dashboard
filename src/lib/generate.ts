@@ -1,3 +1,6 @@
+import { documentService } from "@/data/service";
+import { getAuthToken } from "./sessions";
+
 const listSparing = [
   {
     id: "sparing01",
@@ -79,4 +82,36 @@ const listSparing = [
 export const generateSiteName = (siteId: string) => {
   const site = listSparing.find((sparing) => sparing.id === siteId);
   return site ? site.site : "Unknown";
-}
+};
+
+export const generateBANumber = async () => {
+  const authToken = await getAuthToken();
+  const response = await documentService.getLatestNumber(authToken);
+  if (response.data) {
+    const nomorBA = response.data.no_ba;
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+
+    const romawi = [
+      "",
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII",
+    ];
+
+    return `${nomorBA}/BA/STI/${romawi[month]}/${year}`;
+  } else {
+    console.log("Error:", response.message);
+  }
+};

@@ -1,7 +1,7 @@
 // import Calendar from "@/components/calendar/Calendar";
 import AdjusmentPage from "@/components/adjustment/Adjustment";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import { generateSiteName } from "@/lib/generateSiteName";
+import { generateSiteName } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React from "react";

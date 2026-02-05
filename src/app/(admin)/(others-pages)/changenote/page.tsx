@@ -1,7 +1,7 @@
 import Changenote from "@/components/changenote/Changenote";
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import UnderDev from "@/layout/UnderDev";
-import { generateSiteName } from "@/lib/generateSiteName";
+import { generateSiteName } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React from "react";

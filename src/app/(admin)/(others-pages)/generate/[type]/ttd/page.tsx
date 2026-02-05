@@ -1,7 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import SectionTTD from "@/components/generate/SectionTTD";
 import UnderDev from "@/layout/UnderDev";
-import { generateSiteName } from "@/lib/generateSiteName";
+import { generateSiteName } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React from "react";
