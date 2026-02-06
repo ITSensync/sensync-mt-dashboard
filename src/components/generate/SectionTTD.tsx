@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
@@ -16,15 +17,35 @@ export default function SectionTTD() {
   const onSubmit = async (data: any) => {
     try {
       setLoading(true); // start loading
+      const formData = new FormData();
+
+      Object.entries(data).forEach(([key, value]) => {
+        if (value instanceof FileList) {
+          Array.from(value).forEach((file) => {
+            formData.append(key, file);
+          });
+        } else {
+          key === "items"
+            ? formData.append(key, JSON.stringify(value))
+            : formData.append(key, String(value));
+        }
+      });
+
       const newTab = window.open("", "_blank");
       const idToken = await getAuthToken();
 
       // panggil service
-      await generateService.generateKorektif(idToken, data, newTab);
+      const result = await generateService.generateKorektif(
+        idToken,
+        formData,
+        newTab,
+      );
 
-      setTimeout(() => {
-        router.push("/generate");
-      }, 2000);
+      if (result.success) {
+        setTimeout(() => {
+          router.push("/generate");
+        }, 2000);
+      }
     } catch (err) {
       console.error(err);
       alert("Terjadi kesalahan!");

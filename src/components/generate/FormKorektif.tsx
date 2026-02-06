@@ -5,8 +5,12 @@ import SectionDataPerangkat from "./SectionDataPerangkat";
 import SectionInputKorektif from "./SectionInputKorektif";
 import { useFormContext } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import ComponentCard from "../common/ComponentCard";
+import Label from "../form/Label";
+import FileInput from "../form/input/react-hook/FileInputHook";
 
 export default function FormKorektif() {
+  const { register } = useFormContext();
   const { handleSubmit } = useFormContext();
   const router = useRouter();
 
@@ -41,7 +45,7 @@ export default function FormKorektif() {
     /* const valid = await trigger(); // validasi zod dulu
         if (!valid) return; */
 
-    router.push("/generate/preventif/ttd");
+    router.push("/generate/korektif/ttd");
   };
 
   const handleBackBtn = () => {
@@ -53,6 +57,19 @@ export default function FormKorektif() {
     <form className="grid grid-cols-1 gap-4">
       <SectionDataPerangkat />
       <SectionInputKorektif title="Korektif Item" />
+      <ComponentCard title="Dokumentasi">
+        <fieldset className="fieldset w-full">
+          <Label htmlFor="dokumentasi">
+            Foto-Foto Pemeliharaan <span className="text-red-500">*</span>
+          </Label>
+
+          <FileInput
+            multiple
+            accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif"
+            {...register("dokumentasi")}
+          />
+        </fieldset>
+      </ComponentCard>
       <div className="w-full flex justify-end mt-2 gap-4">
         <button
           type="button"
