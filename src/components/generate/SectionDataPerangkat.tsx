@@ -4,13 +4,32 @@
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import { generateBANumber, generateSiteCity, generateSiteName } from "@/lib/generate";
+import {
+  generateBANumber,
+  generateSiteCity,
+  generateSiteName,
+} from "@/lib/generate";
 import { getIdDevice } from "@/lib/sessions";
 
 import ComponentCard from "../common/ComponentCard";
 import Label from "../form/Label";
 import Input from "../form/input/react-hook/InputFieldHook";
+import SelectField from "../form/input/react-hook/SelectFieldHook";
 
+const teknisi = [
+  {
+    nama: "Candra",
+  },
+  {
+    nama: "Nasrul",
+  },
+  {
+    nama: "Fahri",
+  },
+  {
+    nama: "Fajar",
+  },
+];
 export default function SectionDataPerangkat() {
   const { register, setValue } = useFormContext();
 
@@ -83,10 +102,26 @@ export default function SectionDataPerangkat() {
                 Teknisi <span className="text-red-500">*</span>
               </Label>
 
-              <Input
-                placeholder="John Doe"
-                {...register("teknisi", { required: true })}
-              />
+              <SelectField
+                {...register(`teknisi`)}
+                className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+              >
+                <option
+                  value=""
+                  className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                >
+                  Pilih Nama
+                </option>
+                {teknisi.map((item, index) => (
+                  <option
+                    key={index}
+                    value={item.nama}
+                    className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                  >
+                    {item.nama}
+                  </option>
+                ))}
+              </SelectField>
             </fieldset>
 
             {/* Pengawas */}
