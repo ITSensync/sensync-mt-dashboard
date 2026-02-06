@@ -20,23 +20,11 @@ export default function SectionTTD() {
       const idToken = await getAuthToken();
 
       // panggil service
-      const result = await generateService.generateKorektif(idToken, data);
+      await generateService.generateKorektif(idToken, data, newTab);
 
-      if (result.success && newTab) {
-        const blob = new Blob([result.blob], { type: "application/pdf" });
-        const url = URL.createObjectURL(blob);
-
-        // ⭐ isi tab yang sudah dibuka
-        newTab.location.href = url;
-
-        // tunggu 2 detik setelah download trigger
-        setTimeout(() => {
-          router.push("/generate");
-        }, 2000);
-      } else {
-        console.error("Error:", result);
-        alert("Gagal generate file!");
-      }
+      setTimeout(() => {
+        router.push("/generate");
+      }, 2000);
     } catch (err) {
       console.error(err);
       alert("Terjadi kesalahan!");

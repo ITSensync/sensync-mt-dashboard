@@ -12,49 +12,70 @@ export class Generatervice {
     });
   }
 
-  generateKorektif = async (authToken: any, body: any) => {
+  generateKorektif = async (authToken: any, body: any, newTab?: Window | null) => {
     try {
       const res = await this.instance.post("/korektif", body, {
         headers: authToken,
         responseType: "blob",
       });
 
-      const disposition =
-        res.headers["content-disposition"] ||
-        res.headers["Content-Disposition"];
+      // buat temporary url dari response
+      const fileUrl = this.instance.defaults.baseURL + "/korektif-preview-temp";
 
-      let filename = "ba_korektif.pdf";
+      // ATAU kalau endpoint GET tersedia, langsung:
+      // newTab.location.href = `${baseURL}/korektif?id=123`
 
-      if (disposition) {
-        const match = disposition.match(
-          /filename\*?=(?:UTF-8'')?["']?([^;"']+)/,
-        );
-        if (match) filename = decodeURIComponent(match[1]);
+      if (newTab) {
+        const blob = new Blob([res.data], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+
+        // trick: pakai iframe supaya ada filename (workaround)
+        newTab.location.href = url;
       }
 
-      /* const blob = new Blob([res.data], { type: "application/pdf" });
+      return { success: true };
 
-      const downloadUrl = window.URL.createObjectURL(blob);
+      // const res = await this.instance.post("/korektif", body, {
+      //   headers: authToken,
+      //   responseType: "blob",
+      // });
 
-      // ⭐ OPEN NEW TAB
-      window.open(downloadUrl, "_blank");
+      // const disposition =
+      //   res.headers["content-disposition"] ||
+      //   res.headers["Content-Disposition"];
 
-      setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 10000); */
-      
-      /* const a = document.createElement("a");
+      // let filename = "ba_korektif.pdf";
 
-      a.href = downloadUrl;
-      a.download = filename;
+      // if (disposition) {
+      //   const match = disposition.match(
+      //     /filename\*?=(?:UTF-8'')?["']?([^;"']+)/,
+      //   );
+      //   if (match) filename = decodeURIComponent(match[1]);
+      // }
 
-      // buka tab baru (preview pdf)
-      window.open(downloadUrl, "_blank");
-      document.body.appendChild(a);
-      a.click();
+      // /* const blob = new Blob([res.data], { type: "application/pdf" });
 
-      a.remove();
-      window.URL.revokeObjectURL(downloadUrl); */
+      // const downloadUrl = window.URL.createObjectURL(blob);
 
-      return { success: true, blob: res.data, filename };
+      // // ⭐ OPEN NEW TAB
+      // window.open(downloadUrl, "_blank");
+
+      // setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 10000); */
+
+      // /* const a = document.createElement("a");
+
+      // a.href = downloadUrl;
+      // a.download = filename;
+
+      // // buka tab baru (preview pdf)
+      // window.open(downloadUrl, "_blank");
+      // document.body.appendChild(a);
+      // a.click();
+
+      // a.remove();
+      // window.URL.revokeObjectURL(downloadUrl); */
+
+      // return { success: true, blob: res.data, filename };
     } catch (error: any) {
       if (error.response) {
         return {
