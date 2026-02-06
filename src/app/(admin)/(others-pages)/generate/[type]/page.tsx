@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function page({ params }: { params: { type: string } }) {
   const idSite = (await cookies()).get("id_device")?.value;
-  const { type } = await params;
+  const { type } = params;
 
   return (
     <div>
