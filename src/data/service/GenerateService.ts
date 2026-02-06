@@ -35,15 +35,23 @@ export class Generatervice {
       const blob = new Blob([res.data], { type: "application/pdf" });
 
       const downloadUrl = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
+
+      // ⭐ OPEN NEW TAB
+      window.open(downloadUrl, "_blank");
+
+      setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 10000);
+      /* const a = document.createElement("a");
 
       a.href = downloadUrl;
       a.download = filename;
+
+      // buka tab baru (preview pdf)
+      window.open(downloadUrl, "_blank");
       document.body.appendChild(a);
       a.click();
 
       a.remove();
-      window.URL.revokeObjectURL(downloadUrl);
+      window.URL.revokeObjectURL(downloadUrl); */
 
       return { success: true, filename };
     } catch (error: any) {
