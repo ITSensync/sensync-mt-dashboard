@@ -32,14 +32,15 @@ export class Generatervice {
         if (match) filename = decodeURIComponent(match[1]);
       }
 
-      const blob = new Blob([res.data], { type: "application/pdf" });
+      /* const blob = new Blob([res.data], { type: "application/pdf" });
 
       const downloadUrl = window.URL.createObjectURL(blob);
 
       // ⭐ OPEN NEW TAB
       window.open(downloadUrl, "_blank");
 
-      setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 10000);
+      setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 10000); */
+      
       /* const a = document.createElement("a");
 
       a.href = downloadUrl;
@@ -53,7 +54,7 @@ export class Generatervice {
       a.remove();
       window.URL.revokeObjectURL(downloadUrl); */
 
-      return { success: true, filename };
+      return { success: true, blob: res.data, filename };
     } catch (error: any) {
       if (error.response) {
         return {

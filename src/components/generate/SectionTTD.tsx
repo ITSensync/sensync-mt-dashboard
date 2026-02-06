@@ -16,12 +16,19 @@ export default function SectionTTD() {
   const onSubmit = async (data: any) => {
     try {
       setLoading(true); // start loading
+      const newTab = window.open("", "_blank");
       const idToken = await getAuthToken();
 
       // panggil service
       const result = await generateService.generateKorektif(idToken, data);
 
-      if (result.success) {
+      if (result.success && newTab) {
+        const blob = new Blob([result.blob], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+
+        // ⭐ isi tab yang sudah dibuka
+        newTab.location.href = url;
+
         // tunggu 2 detik setelah download trigger
         setTimeout(() => {
           router.push("/generate");
