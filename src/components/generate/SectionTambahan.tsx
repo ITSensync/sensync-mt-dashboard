@@ -21,6 +21,11 @@ export default function SectionTambahan() {
     router.push("/generate/preventif/ttd");
   };
 
+  const handleBackBtn = () => {
+    // Logic to handle back action
+    router.back();
+  };
+
   return (
     <ComponentCard title="Dokumentasi dan Tambahan">
       {/* FILE */}
@@ -56,7 +61,18 @@ export default function SectionTambahan() {
         />
       </fieldset>
       <div className="flex gap-2 justify-end mt-3">
-        <button type="button" className="btn btn-success font-bold text-white" onClick={handleNextButton}>
+        <button
+          type="button"
+          onClick={handleBackBtn}
+          className="btn btn-outline btn-warning font-bold "
+        >
+          Back
+        </button>
+        <button
+          type="button"
+          className="btn btn-success font-bold text-white"
+          onClick={handleNextButton}
+        >
           Next
         </button>
       </div>
