@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import ComponentCard from "../common/ComponentCard";
 import { useFormContext } from "react-hook-form";
 import SignaturePad from "./SignaturePad";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { getAuthToken } from "@/lib/sessions";
 import { generateService } from "@/data/service";
 
@@ -13,38 +13,45 @@ export default function SectionTTD() {
   const { handleSubmit } = useFormContext();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const pathname = usePathname()?.toLowerCase() || "";
 
   const onSubmit = async (data: any) => {
     try {
       setLoading(true); // start loading
       const formData = new FormData();
 
+      console.log(pathname);
       Object.entries(data).forEach(([key, value]) => {
         if (value instanceof FileList) {
-          Array.from(value).forEach((file) => {
-            formData.append(key, file);
-          });
+          Array.from(value).forEach((file) => formData.append(key, file));
+        } else if (typeof value === "object") {
+          formData.append(key, JSON.stringify(value)); // untuk array/object
         } else {
-          key === "items"
-            ? formData.append(key, JSON.stringify(value))
-            : formData.append(key, String(value));
+          formData.append(key, String(value)); // untuk string/number
         }
       });
 
-      const newTab = window.open("", "_blank");
-      const idToken = await getAuthToken();
-
       // panggil service
-      const result = await generateService.generateKorektif(
-        idToken,
-        formData,
-        newTab,
-      );
+      let result;
+      if (pathname.includes("preventif")) {
+        for (const [key, value] of formData.entries()) {
+          console.log(key, value);
+        }
+      } else {
+        const newTab = window.open("", "_blank");
+        const idToken = await getAuthToken();
 
-      if (result.success) {
-        setTimeout(() => {
-          router.push("/generate");
-        }, 2000);
+        result = await generateService.generateKorektif(
+          idToken,
+          formData,
+          newTab,
+        );
+
+        if (result.success) {
+          setTimeout(() => {
+            router.push("/generate");
+          }, 2000);
+        }
       }
     } catch (err) {
       console.error(err);
