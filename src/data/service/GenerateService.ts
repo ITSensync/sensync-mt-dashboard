@@ -12,15 +12,21 @@ export class Generatervice {
     });
   }
 
-  generateKorektif = async (authToken: any, body: any, newTab?: Window | null) => {
+  generateKorektif = async (
+    authToken: any,
+    body: any,
+    newTab?: Window | null,
+  ) => {
     try {
       const res = await this.instance.post("/korektif", body, {
         headers: authToken,
-        responseType: "blob",
+        // responseType: "blob",
       });
 
+      return res.data;
+
       // buat temporary url dari response
-      const fileUrl = this.instance.defaults.baseURL + "/korektif-preview-temp";
+      /* const fileUrl = this.instance.defaults.baseURL + "/korektif-preview-temp";
 
       // ATAU kalau endpoint GET tersedia, langsung:
       // newTab.location.href = `${baseURL}/korektif?id=123`
@@ -33,7 +39,7 @@ export class Generatervice {
         newTab.location.href = url;
       }
 
-      return { success: true };
+      return { success: true }; */
 
       // const res = await this.instance.post("/korektif", body, {
       //   headers: authToken,
@@ -91,14 +97,20 @@ export class Generatervice {
     }
   };
 
-  generatePreventif = async (authToken: any, body: any, newTab?: Window | null) => {
+  generatePreventif = async (
+    authToken: any,
+    body: any,
+    newTab?: Window | null,
+  ) => {
     try {
       const res = await this.instance.post("/preventif", body, {
         headers: authToken,
-        responseType: "blob",
+        // responseType: "blob",
       });
 
-      // buat temporary url dari response
+      return res.data;
+
+      /* // buat temporary url dari response
       const fileUrl = this.instance.defaults.baseURL + "/preventif-preview-temp";
 
       // ATAU kalau endpoint GET tersedia, langsung:
@@ -112,7 +124,7 @@ export class Generatervice {
         newTab.location.href = url;
       }
 
-      return { success: true, };
+      return { success: true, }; */
 
       // const res = await this.instance.post("/korektif", body, {
       //   headers: authToken,

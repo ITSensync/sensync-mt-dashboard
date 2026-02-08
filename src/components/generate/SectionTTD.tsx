@@ -18,6 +18,8 @@ export default function SectionTTD() {
   const pathname = usePathname()?.toLowerCase() || "";
 
   const onSubmit = async (data: any) => {
+    let previewTab: Window | null = null;
+
     try {
       setLoading(true); // start loading
       const formData = new FormData();
@@ -33,27 +35,59 @@ export default function SectionTTD() {
       });
 
       // panggil service
-      const newTab = window.open("", "_blank");
+      previewTab = window.open("", "_blank");
+      if (previewTab) {
+        previewTab.document.write(`
+        <html>
+          <head>
+            <title>Generating File...</title>
+            <style>
+              body {
+                font-family: system-ui;
+                display:flex;
+                height:100vh;
+                justify-content:center;
+                align-items:center;
+                flex-direction:column;
+                gap:16px;
+              }
+              .spinner {
+                width:50px;
+                height:50px;
+                border:5px solid #ddd;
+                border-top:5px solid #2563eb;
+                border-radius:50%;
+                animation:spin 1s linear infinite;
+              }
+              @keyframes spin {
+                100% { transform: rotate(360deg); }
+              }
+            </style>
+          </head>
+          <body>
+            <div class="spinner"></div>
+            <h3>Generating file, please wait...</h3>
+          </body>
+        </html>
+      `);
+        previewTab.document.close();
+      }
+
       const idToken = await getAuthToken();
       let result;
       if (pathname.includes("preventif")) {
         // for (const [key, value] of formData.entries()) {
         //   console.log(key, value);
         // }
-        result = await generateService.generatePreventif(
-          idToken,
-          formData,
-          newTab,
-        );
+        result = await generateService.generatePreventif(idToken, formData);
       } else {
-        result = await generateService.generateKorektif(
-          idToken,
-          formData,
-          newTab,
-        );
+        result = await generateService.generateKorektif(idToken, formData);
       }
 
-      if (result.success) {
+      if (result.success && previewTab) {
+        previewTab.location.href = `${process.env.MT_API_URL}/generate/${result.url}`;
+
+        setLoading(false);
         (
           document.getElementById("success_modal") as HTMLDialogElement
         ).showModal();
@@ -61,6 +95,7 @@ export default function SectionTTD() {
     } catch (err) {
       console.error(err);
       alert("Terjadi kesalahan!");
+      previewTab?.close();
     } finally {
       setLoading(false);
     }
@@ -72,7 +107,7 @@ export default function SectionTTD() {
 
   return (
     <>
-      <GenerateLoadingModal open={loading} />
+      {/* <GenerateLoadingModal open={loading} /> */}
       <SuccessModal message={"Successfull Generate File"} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <ComponentCard title="Tanda Tangan">
