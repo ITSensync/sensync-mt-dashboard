@@ -13,30 +13,30 @@ const modulUtama = [
   },
   {
     text: "Koneksi internet tersedia",
-    name: "koneksi_internet",
+    name: "internet",
   },
   {
     text: "Koneksi antara modul dan mini pc baik",
-    name: "koneksi_modul_mini_pc",
+    name: "minipc",
   },
   {
     text: "Pembacaan sensor dalam kondisi baik",
-    name: "pembacaan_sensor",
+    name: "sensor",
   },
 ];
 
 const modulSensor = [
   {
     text: "Sensor dalam keadaan bersih dan baik",
-    name: "sensor_bersih",
+    name: "bersih",
   },
   {
     text: "Chamber sensor dalam keadaan bersih dan tidak terdapat kebocoran",
-    name: "chamber_sensor",
+    name: "chamber",
   },
   {
     text: "Pembacaan sensor dalam kondisi normal",
-    name: "pembacaan_sensor",
+    name: "pembacaan",
   },
   {
     text: "Kalibrasi telah selesai dilakukan",
@@ -47,11 +47,11 @@ const modulSensor = [
 const modulPendukung = [
   {
     text: "CB connector dan kabel dalam kondisi baik dan tersambung",
-    name: "cb_connector_kabel"
+    name: "connector"
   },
   {
     text: "Flowmeter berjalan dengan baik",
-    name: "flowmeter_berjalan"
+    name: "flowmeter"
   },
   {
     text: "Pompa berjalan dengan baik",
@@ -62,26 +62,26 @@ const modulPendukung = [
 const sensor = [
   {
     text: "pH",
-    name: "pembacaan_ph",
+    name: "ph",
   },
   {
     text: "COD",
-    name: "pembacaan_cod",
+    name: "cod",
   },
   {
     text: "TSS",
-    name: "pembacaan_tss",
+    name: "tss",
   },
   {
     text: "NH3N",
-    name: "pembacaan_nh3n",
+    name: "nh3n",
   },
 ];
 
 const pengirimanData = [
   {
     text: "Data terkirim ke server",
-    name: "data_terkirim",
+    name: "data",
   }
 ]
 

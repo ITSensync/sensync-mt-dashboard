@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+'use client';
+import React, { useEffect } from "react";
 import { useForm, useFormContext } from "react-hook-form";
 import Input from "../form/input/react-hook/InputFieldHook";
 
@@ -9,6 +10,14 @@ export default function SectionPembacaanSensor({
   dataText: any[];
 }) {
   const { register } = useFormContext();
+  const { setValue } = useFormContext();
+
+  useEffect(() => {
+    dataText.forEach((item) => {
+      setValue(`${item.name}.sebelum`, 0);
+      setValue(`${item.name}.sesudah`, 0);
+    });
+  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-6">

@@ -90,4 +90,83 @@ export class Generatervice {
       };
     }
   };
+
+  generatePreventif = async (authToken: any, body: any, newTab?: Window | null) => {
+    try {
+      const res = await this.instance.post("/preventif", body, {
+        headers: authToken,
+        responseType: "blob",
+      });
+
+      // buat temporary url dari response
+      const fileUrl = this.instance.defaults.baseURL + "/preventif-preview-temp";
+
+      // ATAU kalau endpoint GET tersedia, langsung:
+      // newTab.location.href = `${baseURL}/korektif?id=123`
+
+      if (newTab) {
+        const blob = new Blob([res.data], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+
+        // trick: pakai iframe supaya ada filename (workaround)
+        newTab.location.href = url;
+      }
+
+      return { success: true, };
+
+      // const res = await this.instance.post("/korektif", body, {
+      //   headers: authToken,
+      //   responseType: "blob",
+      // });
+
+      // const disposition =
+      //   res.headers["content-disposition"] ||
+      //   res.headers["Content-Disposition"];
+
+      // let filename = "ba_korektif.pdf";
+
+      // if (disposition) {
+      //   const match = disposition.match(
+      //     /filename\*?=(?:UTF-8'')?["']?([^;"']+)/,
+      //   );
+      //   if (match) filename = decodeURIComponent(match[1]);
+      // }
+
+      // /* const blob = new Blob([res.data], { type: "application/pdf" });
+
+      // const downloadUrl = window.URL.createObjectURL(blob);
+
+      // // ⭐ OPEN NEW TAB
+      // window.open(downloadUrl, "_blank");
+
+      // setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 10000); */
+
+      // /* const a = document.createElement("a");
+
+      // a.href = downloadUrl;
+      // a.download = filename;
+
+      // // buka tab baru (preview pdf)
+      // window.open(downloadUrl, "_blank");
+      // document.body.appendChild(a);
+      // a.click();
+
+      // a.remove();
+      // window.URL.revokeObjectURL(downloadUrl); */
+
+      // return { success: true, blob: res.data, filename };
+    } catch (error: any) {
+      if (error.response) {
+        return {
+          status: error.response.status,
+          message: error.response.data,
+        };
+      }
+
+      return {
+        status: error.code,
+        message: error.message,
+      };
+    }
+  };
 }

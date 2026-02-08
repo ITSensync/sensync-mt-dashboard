@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function SuccessModal({ message }: { message: string }) {
@@ -17,7 +18,20 @@ export default function SuccessModal({ message }: { message: string }) {
           />
         </svg>
         <div className="text-center">
-          <p className="font-semibold text-title-sm xl:text-title-md">{message}</p>
+          <p className="font-semibold text-title-sm xl:text-title-md">
+            {message}
+          </p>
+        </div>
+        <div>
+          <Link href={"/generate"} className="text-blue-600 underline">
+            Back To Main Menu
+          </Link>
+          {/* <button
+            type="button"
+            className="btn btn-md btn-accent font-bold text-white"
+          >
+            Back To Main Menu
+          </button> */}
         </div>
       </div>
     </dialog>
