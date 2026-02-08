@@ -10,14 +10,6 @@ export default function SectionPembacaanSensor({
   dataText: any[];
 }) {
   const { register } = useFormContext();
-  const { setValue } = useFormContext();
-
-  useEffect(() => {
-    dataText.forEach((item) => {
-      setValue(`${item.name}.sebelum`, 0);
-      setValue(`${item.name}.sesudah`, 0);
-    });
-  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-6">
@@ -39,6 +31,7 @@ export default function SectionPembacaanSensor({
                   setValueAs: (v) => (v === "" ? undefined : Number(v)),
                 })}
                 className="w-1/2"
+                placeholder="0"
                 /* defaultValue={formatCustomDate(
                   formInitState.createdAt,
                   "yyyy-MM-dd",
@@ -54,6 +47,7 @@ export default function SectionPembacaanSensor({
                   setValueAs: (v) => (v === "" ? undefined : Number(v)),
                 })}
                 className="w-1/2"
+                placeholder="0"
                 /* defaultValue={formatCustomDate(
                   formInitState.createdAt,
                   "yyyy-MM-dd",
