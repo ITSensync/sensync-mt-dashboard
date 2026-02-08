@@ -85,7 +85,7 @@ const AppHeader: React.FC = () => {
 
           <Link href="/" className="lg:hidden">
             <h1 className="text-2xl text-brand-500 font-bold">
-              Sensync Maitenance
+              Sensync Maintenance
             </h1>
           </Link>
 
