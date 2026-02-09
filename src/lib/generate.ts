@@ -52,7 +52,7 @@ const listSparing = [
   },
   {
     id: "sparing09",
-    site: "BCP",
+    site: "Bintang Cipta Perkasa",
     city: "Bandung",
     img: "",
   },
