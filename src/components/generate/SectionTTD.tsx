@@ -113,11 +113,13 @@ export default function SectionTTD() {
         <ComponentCard title="Tanda Tangan">
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-4 w-full">
-              <p>Teknisi</p>
+              <p className="text-gray-800 dark:text-white/90">Teknisi</p>
               <SignaturePad name="ttd_teknisi" />
             </div>
             <div className="flex flex-col gap-4 w-full mb-4">
-              <p>Pengawas Lapangan</p>
+              <p className="text-gray-800 dark:text-white/90">
+                Pengawas Lapangan
+              </p>
               <SignaturePad name="ttd_pengawas_lapangan" />
             </div>
           </div>

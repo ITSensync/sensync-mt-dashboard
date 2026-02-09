@@ -48,7 +48,7 @@ export default function SignaturePad({ name }: Props) {
         return (
           <div className="flex flex-col gap-2">
             <div className="flex flex-row gap-3">
-              <div className="border rounded-lg bg-white w-2/3">
+              <div className="border rounded-lg bg-white/90 dark:bg-white w-2/3">
                 <SignatureCanvas
                   ref={sigRef}
                   canvasProps={{
@@ -78,8 +78,9 @@ export default function SignaturePad({ name }: Props) {
             </div>
 
             {saved && (
-              <p className="text-sm font-medium">
-                <span className="text-green-500">✓</span> Tanda tangan telah tersimpan
+              <p className="text-sm font-medium text-gray-400 dark:text-white/90">
+                <span className="text-green-500">✓</span> Tanda tangan telah
+                tersimpan
               </p>
             )}
           </div>
