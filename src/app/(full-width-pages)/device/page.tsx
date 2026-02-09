@@ -18,7 +18,7 @@ const listSparing = [
   },
   {
     id: "sparing02",
-    site: "Indorama PWK",
+    site: "Indorama",
     img: "",
   },
   {
@@ -28,7 +28,7 @@ const listSparing = [
   },
   {
     id: "sparing04",
-    site: "Innojaya PDL",
+    site: "Innojaya",
     img: "",
   },
   {

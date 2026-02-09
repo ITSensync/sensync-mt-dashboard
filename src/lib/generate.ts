@@ -10,7 +10,7 @@ const listSparing = [
   },
   {
     id: "sparing02",
-    site: "Indorama PWK",
+    site: "Indorama Polyester",
     city: "Purwakarta",
     img: "",
   },
@@ -22,7 +22,7 @@ const listSparing = [
   },
   {
     id: "sparing04",
-    site: "Innojaya PDL",
+    site: "Innojaya Tekstil",
     city: "Bandung",
     img: "",
   },
@@ -70,13 +70,13 @@ const listSparing = [
   },
   {
     id: "sparing12",
-    site: "Kertas PDL",
+    site: "Kertas Padalarang",
     city: "Bandung",
     img: "",
   },
   {
     id: "sparing13",
-    site: "SSM",
+    site: "Sinar Sukses Mandiri",
     city: "Purwakarta",
     img: "",
   },
