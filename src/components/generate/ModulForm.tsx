@@ -32,7 +32,7 @@ export default function ModulForm({
                 defaultValue=""
               >
                 <option disabled value={""}>
-                  Pick Status
+                  Pilih Status
                 </option>
                 <option value={"ok"}>OK</option>
                 <option value={"not_ok"}>Not OK</option>
@@ -45,7 +45,7 @@ export default function ModulForm({
                 defaultValue=""
               >
                 <option disabled value={""}>
-                  Pick Status
+                  Pilih Status
                 </option>
                 <option value={"ok"}>OK</option>
                 <option value={"not_ok"}>Not OK</option>

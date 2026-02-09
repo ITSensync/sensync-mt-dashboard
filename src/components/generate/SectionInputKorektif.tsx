@@ -40,7 +40,7 @@ export default function SectionInputKorektif({ title }: { title: string }) {
                 value=""
                 className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
               >
-                Pick Status
+                Pilih Status
               </option>
               <option value={"ok"}>OK</option>
               <option value={"not_ok"}>Not OK</option>

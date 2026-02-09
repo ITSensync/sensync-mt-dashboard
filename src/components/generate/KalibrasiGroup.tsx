@@ -8,25 +8,30 @@ import Input from "../form/input/react-hook/InputFieldHook";
 const larutanPh = [
   { value: "aquadest", label: "Aquadest" },
   { value: "4", label: "Buffer 4" },
+  { value: "6.86", label: "Buffer 6.86" },
   { value: "7", label: "Buffer 7" },
+  { value: "9.18", label: "Buffer 9.18" },
   { value: "10", label: "Buffer 10" },
 ];
 const larutanCod = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "25", label: "Buffer 25" },
-  { value: "50", label: "Buffer 50" },
-  { value: "75", label: "Buffer 75" },
-  { value: "100", label: "Buffer 100" },
+  { value: "25", label: "25 mg/L" },
+  { value: "50", label: "50 mg/L" },
+  { value: "75", label: "75 mg/L" },
+  { value: "100", label: "100 mg/L" },
+  { value: "200", label: "200 mg/L" },
 ];
 const larutanTss = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "30", label: "Buffer 30" },
+  { value: "30", label: "30 mg/L" },
+  { value: "40", label: "40 mg/L" },
+  { value: "50", label: "50 mg/L" },
 ];
 const larutanNh3n = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "1", label: "Buffer 1" },
-  { value: "2", label: "Buffer 2" },
-  { value: "3", label: "Buffer 3" },
+  { value: "1", label: "1 mg/L" },
+  { value: "2", label: "2 mg/L" },
+  { value: "3", label: "3 mg/L" },
 ];
 
 export default function KalibrasiGroup({

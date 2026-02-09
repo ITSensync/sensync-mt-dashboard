@@ -45,13 +45,13 @@ export default function SectionDataPerangkat() {
       setValue("lokasi", city);
     };
 
-    const fetchBANumber = async () => {
+    /* const fetchBANumber = async () => {
       const nomorBa = await generateBANumber();
       console.log(nomorBa);
       setValue("nomor_ba", nomorBa);
     };
 
-    fetchBANumber();
+    fetchBANumber(); */
     fetchIdDevice();
     // setValue("nomor_ba", "11/BA/STI/I/2026");
   }, [setValue]);
@@ -66,7 +66,7 @@ export default function SectionDataPerangkat() {
               Nomor BA <span className="text-red-500">*</span>
             </Label>
 
-            <Input disabled {...register("nomor_ba")} />
+            <Input {...register("nomor_ba")} placeholder="xx/xx/xx"/>
           </fieldset>
 
           <div className="grid grid-cols-2 gap-10 mt-4">
