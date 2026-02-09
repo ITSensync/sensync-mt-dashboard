@@ -76,9 +76,9 @@ export default function SectionTTD() {
       const idToken = await getAuthToken();
       let result;
       if (pathname.includes("preventif")) {
-        // for (const [key, value] of formData.entries()) {
-        //   console.log(key, value);
-        // }
+        /* for (const [key, value] of formData.entries()) {
+          console.log(key, value);
+        } */
         result = await generateService.generatePreventif(idToken, formData);
       } else {
         result = await generateService.generateKorektif(idToken, formData);

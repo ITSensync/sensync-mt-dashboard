@@ -7,26 +7,26 @@ import Input from "../form/input/react-hook/InputFieldHook";
 
 const larutanPh = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "buffer4", label: "Buffer 4" },
-  { value: "buffer7", label: "Buffer 7" },
-  { value: "buffer10", label: "Buffer 10" },
+  { value: "4", label: "Buffer 4" },
+  { value: "7", label: "Buffer 7" },
+  { value: "10", label: "Buffer 10" },
 ];
 const larutanCod = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "buffer25", label: "Buffer 25" },
-  { value: "buffer50", label: "Buffer 50" },
-  { value: "buffer75", label: "Buffer 75" },
-  { value: "buffer100", label: "Buffer 100" },
+  { value: "25", label: "Buffer 25" },
+  { value: "50", label: "Buffer 50" },
+  { value: "75", label: "Buffer 75" },
+  { value: "100", label: "Buffer 100" },
 ];
 const larutanTss = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "buffer30", label: "Buffer 30" },
+  { value: "30", label: "Buffer 30" },
 ];
 const larutanNh3n = [
   { value: "aquadest", label: "Aquadest" },
-  { value: "buffer1", label: "Buffer 1" },
-  { value: "buffer2", label: "Buffer 2" },
-  { value: "buffer3", label: "Buffer 3" },
+  { value: "1", label: "Buffer 1" },
+  { value: "2", label: "Buffer 2" },
+  { value: "3", label: "Buffer 3" },
 ];
 
 export default function KalibrasiGroup({
