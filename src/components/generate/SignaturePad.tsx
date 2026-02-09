@@ -10,9 +10,28 @@ interface Props {
 
 export default function SignaturePad({ name }: Props) {
   const sigRef = useRef<SignatureCanvas>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
   const { control, getValues } = useFormContext();
 
   const [saved, setSaved] = useState(false);
+  const [width, setWidth] = useState(400);
+
+  // ⭐ AUTO RESIZE mengikuti parent
+  useEffect(() => {
+    const resize = () => {
+      if (wrapperRef.current) {
+        setWidth(wrapperRef.current.clientWidth);
+      }
+    };
+
+    resize(); // first render
+
+    const observer = new ResizeObserver(resize);
+    if (wrapperRef.current) observer.observe(wrapperRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Controller
@@ -20,10 +39,8 @@ export default function SignaturePad({ name }: Props) {
       control={control}
       defaultValue=""
       render={({ field }) => {
-        // ⭐ AUTO RESTORE SAAT MOUNT
         useEffect(() => {
           const existing = getValues(name);
-
           if (existing && sigRef.current) {
             sigRef.current.fromDataURL(existing);
             setSaved(true);
@@ -38,7 +55,6 @@ export default function SignaturePad({ name }: Props) {
 
         const save = () => {
           const dataUrl = sigRef.current?.toDataURL("image/png");
-
           if (dataUrl) {
             field.onChange(dataUrl);
             setSaved(true);
@@ -48,12 +64,17 @@ export default function SignaturePad({ name }: Props) {
         return (
           <div className="flex flex-col gap-2">
             <div className="flex flex-row gap-3">
-              <div className="border rounded-lg bg-white/90 dark:bg-white w-2/3">
+              {/* ⭐ wrapper responsive */}
+              <div
+                ref={wrapperRef}
+                className="border rounded-lg bg-white/90 dark:bg-white w-2/3"
+              >
                 <SignatureCanvas
                   ref={sigRef}
                   canvasProps={{
-                    width: 450,
+                    width,
                     height: 300,
+                    className: "w-full",
                   }}
                 />
               </div>
