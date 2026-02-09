@@ -111,7 +111,7 @@ export default function SectionTTD() {
       <SuccessModal message={"Successfull Generate File"} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <ComponentCard title="Tanda Tangan">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="flex flex-col gap-4 w-full">
               <p className="text-gray-800 dark:text-white/90">Teknisi</p>
               <SignaturePad name="ttd_teknisi" />

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function MainMenu() {
   return (
-    <div className="grid grid-cols-3 gap-6 p-4 rounded-2xl">
+    <div className="grid grid-cold-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-4 rounded-2xl">
       <Link
         href={"/generate/preventif"}
         className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
@@ -16,7 +16,7 @@ export default function MainMenu() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-36 text-gray-800 dark:text-white/90"
+            className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
           >
             <path
               strokeLinecap="round"
@@ -37,7 +37,7 @@ export default function MainMenu() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
-            className="size-36 text-gray-800 dark:text-white/90"
+            className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
           >
             <path
               fillRule="evenodd"
@@ -57,7 +57,7 @@ export default function MainMenu() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
-            className="size-36 text-gray-800 dark:text-white/90"
+            className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
           >
             <path
               fillRule="evenodd"

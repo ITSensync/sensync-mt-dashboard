@@ -24,7 +24,7 @@ export default function ListCard({ list} : {list: any[]}) {
   };
 
   return (
-    <div className="grid grid-cols-5 items-center justify-center gap-15">
+    <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-center justify-center gap-15">
       {list.map((item) => {
         return (
           <CardDevice

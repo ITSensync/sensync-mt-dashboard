@@ -94,7 +94,7 @@ const listBase = [
 export default function ChooseDevice() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <p className="text-3xl font-bold mb-8">Pilih Site / Alat</p>
+      <p className="text-3xl font-bold mb-8 text-center">Pilih Site / Alat</p>
       <p className="text-2xl font-semibold mb-6">SPARING</p>
       <ListCard list={listSparing} />
       <div className="divider"></div>
