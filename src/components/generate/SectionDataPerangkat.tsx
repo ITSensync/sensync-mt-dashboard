@@ -24,10 +24,10 @@ const teknisi = [
     nama: "Nasrul",
   },
   {
-    nama: "Fahri",
+    nama: "Fachri",
   },
   {
-    nama: "Fajar",
+    nama: "Pasya",
   },
 ];
 export default function SectionDataPerangkat() {
