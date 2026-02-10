@@ -9,12 +9,18 @@ export default function PreventifLayout({
   children: React.ReactNode;
 }) {
   const methods = useForm({
-    defaultValues: JSON.parse(
-      sessionStorage.getItem("kalibrasi-form") || "{}",
-    ),
+    defaultValues: {}, // kosong dulu
   });
 
-  const { watch } = methods;
+  const { watch, reset } = methods;
+
+  // load saved data (CLIENT ONLY)
+  useEffect(() => {
+    const saved = sessionStorage.getItem("kalibrasi-form");
+    if (saved) {
+      reset(JSON.parse(saved));
+    }
+  }, [reset]);
 
   // auto save
   useEffect(() => {
