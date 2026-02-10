@@ -115,6 +115,7 @@ export default function KalibrasiGroup({
           {/* Nilai */}
           <Input
             type="number"
+            step="any"
             {...register(`kalibrasi.${name}.${index}.nilai`, {
               required: true,
               setValueAs: (v) => (v === "" ? undefined : Number(v)),

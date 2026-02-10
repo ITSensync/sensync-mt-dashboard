@@ -26,6 +26,7 @@ export default function SectionPembacaanSensor({
             <div className="flex justify-center">
               <Input
                 type="number"
+                step="any"
                 {...register(`${item.name}.sebelum`, {
                   required: true,
                   setValueAs: (v) => (v === "" ? undefined : Number(v)),
@@ -42,6 +43,7 @@ export default function SectionPembacaanSensor({
             <div className="flex justify-center">
               <Input
                 type="number"
+                step="any"
                 {...register(`${item.name}.sesudah`, {
                   required: true,
                   setValueAs: (v) => (v === "" ? undefined : Number(v)),
