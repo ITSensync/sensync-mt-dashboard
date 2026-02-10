@@ -108,7 +108,7 @@ export default function SectionTTD() {
   return (
     <>
       {/* <GenerateLoadingModal open={loading} /> */}
-      <SuccessModal message={"Successfull Generate File"} />
+      <SuccessModal message={"Successfull Generate File"} mainMenu/>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ComponentCard title="Tanda Tangan">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

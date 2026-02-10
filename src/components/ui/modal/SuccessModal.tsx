@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
 
-export default function SuccessModal({ message }: { message: string }) {
+export default function SuccessModal({
+  message,
+  mainMenu,
+}: {
+  message: string;
+  mainMenu?: boolean;
+}) {
   return (
     <dialog id="success_modal" className={`modal modal-middle`}>
       <div className="modal-box w-fit flex flex-col items-center gap-3">
@@ -22,17 +28,13 @@ export default function SuccessModal({ message }: { message: string }) {
             {message}
           </p>
         </div>
-        <div>
-          <Link href={"/generate"} className="text-blue-600 underline">
-            Back To Main Menu
-          </Link>
-          {/* <button
-            type="button"
-            className="btn btn-md btn-accent font-bold text-white"
-          >
-            Back To Main Menu
-          </button> */}
-        </div>
+        {mainMenu && (
+          <div>
+            <Link href={"/generate"} className="text-blue-600 underline">
+              Back To Main Menu
+            </Link>
+          </div>
+        )}
       </div>
     </dialog>
   );
