@@ -14,9 +14,9 @@ export default function FormPreventif() {
       <SectionDataPerangkat />
       <SectionChecklist />
       {/* KALIBRASI */}
-      <ComponentCard title="Kalibrasi">
+      {/* <ComponentCard title="Kalibrasi">
         <SectionKalibrasi />
-      </ComponentCard>
+      </ComponentCard> */}
       {/* DOKUMENTASI */}
       <SectionTambahan />
     </form>

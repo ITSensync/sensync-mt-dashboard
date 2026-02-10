@@ -9,7 +9,9 @@ import {
   FileIcon,
   HorizontaLDots,
   PencilIcon,
+  TableIcon,
   TaskIcon,
+  VideoIcon,
 } from "../icons/index";
 import { getIdDevice } from "@/lib/sessions";
 import { ADJUSMENT_ALLOWED_DEVICES } from "@/lib/allowedDevice";
@@ -38,6 +40,16 @@ const navItems: NavItem[] = [
     name: "Generate BA",
     path: "/generate",
   },
+  {
+    icon: <TableIcon />,
+    name: "Kalibrasi",
+    path: "/kalibrasi",
+  },
+  {
+    icon: <VideoIcon />,
+    name: "Dokumentasi",
+    path: "/dokumentasi",
+  },
 ];
 
 const navItemsAlternate: NavItem[] = [
@@ -50,6 +62,16 @@ const navItemsAlternate: NavItem[] = [
     icon: <FileIcon />,
     name: "Generate BA",
     path: "/generate",
+  },
+  {
+    icon: <TableIcon />,
+    name: "Kalibrasi",
+    path: "/kalibrasi",
+  },
+  {
+    icon: <VideoIcon />,
+    name: "Dokumentasi",
+    path: "/dokumentasi",
   },
 ];
 

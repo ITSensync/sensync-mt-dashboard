@@ -27,9 +27,9 @@ export default function SectionTambahan() {
   };
 
   return (
-    <ComponentCard title="Dokumentasi dan Tambahan">
+    <ComponentCard title="Tambahan">
       {/* FILE */}
-      <fieldset className="fieldset w-full">
+      {/* <fieldset className="fieldset w-full">
         <Label htmlFor="dokumentasi">
           Foto-Foto Pemeliharaan <span className="text-red-500">*</span>
         </Label>
@@ -39,7 +39,7 @@ export default function SectionTambahan() {
           accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif"
           {...register("dokumentasi")}
         />
-      </fieldset>
+      </fieldset> */}
 
       {/* KETERANGAN */}
       <fieldset className="fieldset w-full">

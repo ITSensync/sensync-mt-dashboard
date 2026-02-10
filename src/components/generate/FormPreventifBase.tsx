@@ -56,7 +56,7 @@ export default function FormPreventifBase() {
     <form className="grid grid-cols-1 gap-4">
       <SectionDataPerangkat />
       <SectionChecklistBase />
-      <ComponentCard title="Dokumentasi">
+      {/* <ComponentCard title="Dokumentasi">
         <fieldset className="fieldset w-full">
           <Label htmlFor="dokumentasi">
             Foto-Foto Pemeliharaan <span className="text-red-500">*</span>
@@ -68,7 +68,7 @@ export default function FormPreventifBase() {
             {...register("dokumentasi")}
           />
         </fieldset>
-      </ComponentCard>
+      </ComponentCard> */}
       <div className="w-full flex justify-end mt-2 gap-4">
         <button
           type="button"
