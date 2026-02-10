@@ -24,6 +24,10 @@ export default function RootLayout({
     if (pathname == "/generate") {
       sessionStorage.removeItem("maintenance-form");
     }
+
+    if (pathname !== "/kalibrasi") {
+      sessionStorage.removeItem("kalibrasi-form");
+    }
   }, [pathname]);
 
   return (
