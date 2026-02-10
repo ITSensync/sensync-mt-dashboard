@@ -109,7 +109,7 @@ const listSparing = [
   {
     id: "spinning",
     type: "sparing",
-    site: "Spinning",
+    site: "Indorama Synthetics Div. Spinning",
     city: "Purwakarta",
     domisili: "Non Bandung",
     img: "",
