@@ -77,7 +77,7 @@ const listSparing = [
   {
     id: "sparing10",
     type: "sparing",
-    site: "Pangjaya",
+    site: "Sinar Pangjaya",
     city: "Bandung",
     domisili: "Bandung",
     img: "",
