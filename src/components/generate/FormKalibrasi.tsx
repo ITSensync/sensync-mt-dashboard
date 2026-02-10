@@ -43,7 +43,6 @@ export default function FormKalibrasi() {
     const auhtToken = await getAuthToken();
     const response = await generateService.generateKalibrasi(auhtToken, data);
 
-    console.log(response);
     if (response.status == 200) {
       (
         document.getElementById("success_modal") as HTMLDialogElement
