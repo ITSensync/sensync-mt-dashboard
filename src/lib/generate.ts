@@ -119,6 +119,7 @@ const listSparing = [
     type: "aqms",
     site: "DLH Kota Bandung",
     city: "Bandung",
+    domisili: "",
     img: "",
   },
   {
@@ -126,6 +127,7 @@ const listSparing = [
     type: "aqms",
     site: "DLH Kab. Karawang",
     city: "Karawang",
+    domisili: "",
     img: "",
   },
 ];
