@@ -4,90 +4,126 @@ import { getAuthToken } from "./sessions";
 const listSparing = [
   {
     id: "sparing01",
+    type: "sparing",
     site: "Gistex",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing02",
+    type: "sparing",
     site: "Indorama Polyester",
     city: "Purwakarta",
+    domisili: "Non Bandung",
     img: "",
   },
   {
     id: "sparing03",
+    type: "sparing",
     site: "PMT",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing04",
+    type: "sparing",
     site: "Innojaya Tekstil",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing05",
+    type: "sparing",
     site: "Besland",
     city: "Purwakarta",
+    domisili: "Non Bandung",
     img: "",
   },
   {
     id: "sparing06",
+    type: "sparing",
     site: "Indotaisei",
     city: "Purwakarta",
+    domisili: "Non Bandung",
     img: "",
   },
   {
     id: "sparing07",
+    type: "sparing",
     site: "Daliatex",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing08",
+    type: "sparing",
     site: "Papyrus",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing09",
+    type: "sparing",
     site: "Bintang Cipta Perkasa",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing10",
+    type: "sparing",
     site: "Pangjaya",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing11",
+    type: "sparing",
     site: "LPA",
     city: "Bekasi",
+    domisili: "Non Bandung",
     img: "",
   },
   {
     id: "sparing12",
+    type: "sparing",
     site: "Kertas Padalarang",
     city: "Bandung",
+    domisili: "Bandung",
     img: "",
   },
   {
     id: "sparing13",
+    type: "sparing",
     site: "Sinar Sukses Mandiri",
     city: "Purwakarta",
+    domisili: "Non Bandung",
+    img: "",
+  },
+  {
+    id: "spinning",
+    type: "sparing",
+    site: "Spinning",
+    city: "Purwakarta",
+    domisili: "Non Bandung",
     img: "",
   },
   {
     id: "basebdg",
+    type: "aqms",
     site: "DLH Kota Bandung",
     city: "Bandung",
     img: "",
   },
   {
     id: "basekrwg",
+    type: "aqms",
     site: "DLH Kab. Karawang",
     city: "Karawang",
     img: "",
@@ -102,6 +138,16 @@ export const generateSiteName = (siteId: string) => {
 export const generateSiteCity = (siteId: string) => {
   const site = listSparing.find((sparing) => sparing.id === siteId);
   return site ? site.city : "Unknown";
+}
+
+export const generateSiteType = (siteId: string) => {
+  const site = listSparing.find((sparing) => sparing.id === siteId);
+  return site ? site.type : "Unknown";
+}
+
+export const generateSiteDomisili = (siteId: string) => {
+  const site = listSparing.find((sparing) => sparing.id === siteId);
+  return site ? site.domisili : "Unknown";
 }
 
 export const generateBANumber = async () => {
