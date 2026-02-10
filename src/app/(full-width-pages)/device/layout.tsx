@@ -12,11 +12,11 @@ export default function DeviceLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-6 bg-white z-1 dark:bg-gray-900 sm:p-0">
+    <div className="p-0 bg-white z-1 dark:bg-gray-900 sm:p-0">
       <ThemeProvider>
         <div className="flex flex-row w-full justify-center  dark:bg-gray-900 sm:p-0">
           <div className="w-full h-fit bg-brand-950 dark:bg-white/5 grid items-center">
-            <div className="items-center justify-center  flex z-1 p-25">
+            <div className="items-center justify-center  flex z-1 p-10 sm:p-25">
               {/* <!-- ===== Common Grid Shape Start ===== --> */}
               {/* <GridShape /> */}
               {children}

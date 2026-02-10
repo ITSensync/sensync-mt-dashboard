@@ -15,7 +15,7 @@ export default function CardDevice({
   return (
     <div
       onClick={() => onClick(id)}
-      className="group w-full xl:w-[10vw] h-[25vh] flex flex-col gap-1 items-center justify-center
+      className="group w-full xl:w-[10vw] h-full 2xl:h-[25vh] flex flex-col gap-1 items-center justify-center
         bg-white p-8 rounded-xl
         border border-transparent
         transition-all duration-300
