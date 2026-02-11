@@ -63,11 +63,11 @@ export default function SignaturePad({ name }: Props) {
 
         return (
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               {/* ⭐ wrapper responsive */}
               <div
                 ref={wrapperRef}
-                className="border rounded-lg bg-white/90 dark:bg-white w-2/3"
+                className="border rounded-lg bg-white/90 dark:bg-white w-full sm:w-2/3"
               >
                 <SignatureCanvas
                   ref={sigRef}
@@ -79,10 +79,10 @@ export default function SignaturePad({ name }: Props) {
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-row w-full sm:w-1/3 sm:flex-col gap-2">
                 <button
                   type="button"
-                  className="btn btn-lg btn-error font-bold text-white"
+                  className="btn btn-lg btn-error w-1/2 sm:w-full font-bold text-white"
                   onClick={clear}
                 >
                   Hapus
@@ -90,7 +90,7 @@ export default function SignaturePad({ name }: Props) {
 
                 <button
                   type="button"
-                  className="btn btn-lg btn-info font-bold text-white"
+                  className="btn btn-lg btn-info w-1/2 sm:w-full font-bold text-white"
                   onClick={save}
                 >
                   Simpan
