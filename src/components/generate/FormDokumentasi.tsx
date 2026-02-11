@@ -146,16 +146,16 @@ export default function FormDokumentasi() {
               }}
               className="focus:border-ring-brand-300 h-11 w-full overflow-hidden rounded-lg border border-gray-300 bg-transparent text-sm text-gray-500 shadow-theme-xs transition-colors file:mr-5 file:border-collapse file:cursor-pointer file:rounded-l-lg file:border-0 file:border-r file:border-solid file:border-gray-200 file:bg-gray-50 file:py-3 file:pl-3.5 file:pr-3 file:text-sm file:text-gray-700 placeholder:text-gray-400 hover:file:bg-gray-100 focus:outline-hidden focus:file:ring-brand-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:text-white/90 dark:file:border-gray-800 dark:file:bg-white/[0.03] dark:file:text-gray-400 dark:placeholder:text-gray-400"
             />
-            <p>Maximal ukuran per file 50MB</p>
+            <p className="text-gray-700 dark:text-white/90">Maximal ukuran per file 50MB</p>
 
             {selectedFiles.length > 0 && (
               <ul className="mt-3 space-y-2">
                 {selectedFiles.map((file, i) => (
                   <li
                     key={i}
-                    className="flex justify-between items-center bg-base-200 px-3 py-2 rounded"
+                    className="flex justify-between items-center bg-gray-200 dark:bg-gray-900 px-3 py-2 rounded"
                   >
-                    <span className="text-sm">{file.name}</span>
+                    <span className="text-sm text-gray-700 dark:text-white/90">{file.name}</span>
 
                     <button
                       type="button"
