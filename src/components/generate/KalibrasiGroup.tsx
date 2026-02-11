@@ -117,7 +117,7 @@ export default function KalibrasiGroup({
             type="number"
             step="any"
             {...register(`kalibrasi.${name}.${index}.nilai`, {
-              required: true,
+              // required: true,
               setValueAs: (v) => (v === "" ? undefined : Number(v)),
             })}
             placeholder="Nilai"
