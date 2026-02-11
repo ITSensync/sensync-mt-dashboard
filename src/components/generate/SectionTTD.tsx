@@ -6,7 +6,7 @@ import ComponentCard from "../common/ComponentCard";
 import { useFormContext } from "react-hook-form";
 import SignaturePad from "./SignaturePad";
 import { usePathname, useRouter } from "next/navigation";
-import { getAuthToken } from "@/lib/sessions";
+import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { generateService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import GenerateLoadingModal from "../ui/modal/GenerateLoadingModal";
@@ -74,12 +74,16 @@ export default function SectionTTD() {
       }
 
       const idToken = await getAuthToken();
+      const idDevice = await getIdDevice();
       let result;
       if (pathname.includes("preventif")) {
         /* for (const [key, value] of formData.entries()) {
           console.log(key, value);
         } */
-        result = await generateService.generatePreventif(idToken, formData);
+        result =
+          idDevice === "sparing05"
+            ? await generateService.generateBulanan(idToken, formData)
+            : await generateService.generatePreventif(idToken, formData);
       } else {
         result = await generateService.generateKorektif(idToken, formData);
       }
@@ -108,7 +112,7 @@ export default function SectionTTD() {
   return (
     <>
       {/* <GenerateLoadingModal open={loading} /> */}
-      <SuccessModal message={"Successfull Generate File"} mainMenu/>
+      <SuccessModal message={"Successfull Generate File"} mainMenu />
       <form onSubmit={handleSubmit(onSubmit)}>
         <ComponentCard title="Tanda Tangan">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

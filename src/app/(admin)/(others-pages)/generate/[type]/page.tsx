@@ -1,4 +1,5 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import FormBulanan from "@/components/generate/FormBulanan/FormBulanan";
 import FormKorektif from "@/components/generate/FormKorektif";
 import FormPreventif from "@/components/generate/FormPreventif";
 import FormPreventifBase from "@/components/generate/FormPreventifBase";
@@ -13,10 +14,13 @@ export const metadata: Metadata = {
   description: "This is Next.js Blank Page TailAdmin Dashboard Template",
 };
 
-export default async function page({ params }: { params: Promise<{ type: string }> }) {
+export default async function page({
+  params,
+}: {
+  params: Promise<{ type: string }>;
+}) {
   const idSite = (await cookies()).get("id_device")?.value;
   const { type } = await params;
-
 
   return (
     <div>
@@ -28,6 +32,8 @@ export default async function page({ params }: { params: Promise<{ type: string 
       {type === "preventif" ? (
         idSite?.includes("base") ? (
           <FormPreventifBase />
+        ) : idSite === "sparing05" ? (
+          <FormBulanan />
         ) : (
           <FormPreventif />
         )
