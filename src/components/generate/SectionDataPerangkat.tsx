@@ -66,7 +66,12 @@ export default function SectionDataPerangkat() {
               Nomor BA <span className="text-red-500">*</span>
             </Label>
 
-            <Input {...register("nomor_ba")} placeholder="xx/xx/xx"/>
+            <Input
+              {...register("nomor_ba", {
+                required: true,
+              })}
+              placeholder="xx/xx/xx"
+            />
           </fieldset>
 
           <div className="grid grid-cols-2 gap-10 mt-4">
@@ -75,14 +80,24 @@ export default function SectionDataPerangkat() {
                 Site <span className="text-red-500">*</span>
               </Label>
 
-              <Input disabled {...register("site")} />
+              <Input
+                disabled
+                {...register("site", {
+                  required: true,
+                })}
+              />
             </fieldset>
             <fieldset className="fieldset w-full">
               <Label htmlFor="site">
                 Lokasi <span className="text-red-500">*</span>
               </Label>
 
-              <Input disabled {...register("lokasi")} />
+              <Input
+                disabled
+                {...register("lokasi", {
+                  required: true,
+                })}
+              />
             </fieldset>
           </div>
 
@@ -103,7 +118,9 @@ export default function SectionDataPerangkat() {
               </Label>
 
               <SelectField
-                {...register(`teknisi`)}
+                {...register(`teknisi`, {
+                  required: true,
+                })}
                 className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
               >
                 <option

@@ -139,7 +139,9 @@ export default function FormDokumentasi() {
               type="file"
               multiple
               accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif"
-              {...register("dokumentasi")}
+              {...register("dokumentasi", {
+                required: true,
+              })}
               onChange={(e) => {
                 register("dokumentasi").onChange(e); // wajib untuk RHF
                 handleFiles(e); // untuk list nama

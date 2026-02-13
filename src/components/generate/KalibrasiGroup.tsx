@@ -61,7 +61,9 @@ export default function KalibrasiGroup({
         >
           {/* Larutan */}
           <SelectField
-            {...register(`kalibrasi.${name}.${index}.larutan`)}
+            {...register(`kalibrasi.${name}.${index}.larutan`, {
+              required: true,
+            })}
             className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
           >
             <option
