@@ -31,7 +31,11 @@ const teknisi = [
   },
 ];
 export default function SectionDataPerangkat() {
-  const { register, setValue } = useFormContext();
+  const {
+    register,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
 
   useEffect(() => {
     const fetchIdDevice = async () => {
@@ -68,10 +72,15 @@ export default function SectionDataPerangkat() {
 
             <Input
               {...register("nomor_ba", {
-                required: true,
+                required: "Nomor BA tidak boleh kosong",
               })}
               placeholder="xx/xx/xx"
             />
+            {errors.nomor_ba && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.nomor_ba.message as string}
+              </p>
+            )}
           </fieldset>
 
           <div className="grid grid-cols-2 gap-10 mt-4">
@@ -83,9 +92,14 @@ export default function SectionDataPerangkat() {
               <Input
                 disabled
                 {...register("site", {
-                  required: true,
+                  required: "Site tidak boleh kosong",
                 })}
               />
+              {errors.site && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.site.message as string}
+                </p>
+              )}
             </fieldset>
             <fieldset className="fieldset w-full">
               <Label htmlFor="site">
@@ -95,9 +109,14 @@ export default function SectionDataPerangkat() {
               <Input
                 disabled
                 {...register("lokasi", {
-                  required: true,
+                  required: "Lokasi tidak boleh kosong",
                 })}
               />
+              {errors.lokasi && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.lokasi.message as string}
+                </p>
+              )}
             </fieldset>
           </div>
 
@@ -119,7 +138,7 @@ export default function SectionDataPerangkat() {
 
               <SelectField
                 {...register(`teknisi`, {
-                  required: true,
+                  required: "Teknisi wajib diisi",
                 })}
                 className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
               >
@@ -139,6 +158,11 @@ export default function SectionDataPerangkat() {
                   </option>
                 ))}
               </SelectField>
+              {errors.teknisi && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.teknisi.message as string}
+                </p>
+              )}
             </fieldset>
 
             {/* Pengawas */}
@@ -149,8 +173,15 @@ export default function SectionDataPerangkat() {
 
               <Input
                 placeholder="John Doe"
-                {...register("pengawas_lapangan", { required: true })}
+                {...register("pengawas_lapangan", {
+                  required: "Pengawas Lapangan tidak boleh kosong",
+                })}
               />
+              {errors.pengawas_lapangan && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.pengawas_lapangan.message as string}
+                </p>
+              )}
             </fieldset>
           </div>
         </div>

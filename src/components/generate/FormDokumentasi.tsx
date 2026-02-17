@@ -30,7 +30,7 @@ export default function FormDokumentasi() {
 
   const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFiles = Array.from(e.target.files || []);
-    setSelectedFiles((prev) => [...prev, ...newFiles]);
+    setSelectedFiles(newFiles);
   };
 
   const removeFile = (index: number) => {
@@ -138,6 +138,7 @@ export default function FormDokumentasi() {
               id="dokumentasi"
               type="file"
               multiple
+              required
               accept=".jpg,.jpeg,.png,.gif,image/jpeg,image/png,image/gif"
               {...register("dokumentasi", {
                 required: true,

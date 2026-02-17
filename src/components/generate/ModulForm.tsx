@@ -10,7 +10,7 @@ export default function ModulForm({
   dataText: any[];
 }) {
   const { register } = useFormContext();
-  
+
   return (
     <div className="grid grid-cols-1 gap-6">
       <div className="col-span-full">
@@ -24,10 +24,10 @@ export default function ModulForm({
             key={index}
             className="grid grid-cols-3 items-center py-2 gap-5 text-gray-700 dark:text-gray-400"
           >
-            <p className="text-sm">{item.text}</p>
+            <p className="text-xs sm:text-sm">{item.text}</p>
             <div className="flex justify-center">
               <select
-                className={`h-11 w-1/2 appearance-none rounded-lg border border-gray-300  px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-600`}
+                className={`h-11 w-full sm:w-1/2 appearance-none rounded-lg border border-gray-300  px-4 py-2.5 pr-11 text-xs sm:text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-600`}
                 {...register(`${item.name}.sebelum`)}
                 defaultValue=""
               >
@@ -40,7 +40,7 @@ export default function ModulForm({
             </div>
             <div className="flex justify-center">
               <select
-                className={`h-11 w-1/2 appearance-none rounded-lg border border-gray-300  px-4 py-2.5 pr-11 text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-600`}
+                className={`h-11 w-full sm:w-1/2 appearance-none rounded-lg border border-gray-300  px-4 py-2.5 pr-11 text-xs sm:text-sm shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 text-gray-600`}
                 {...register(`${item.name}.sesudah`)}
                 defaultValue=""
               >

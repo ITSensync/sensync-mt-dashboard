@@ -65,6 +65,7 @@ export default function KalibrasiGroup({
               required: true,
             })}
             className="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+            required
           >
             <option
               value=""

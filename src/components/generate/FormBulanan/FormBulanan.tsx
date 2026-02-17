@@ -6,12 +6,27 @@ import SectionInputBulanan from "./SectionInputBulanan";
 import { useRouter } from "next/navigation";
 
 export default function FormBulanan() {
-  // const { handleSubmit } = useFormContext();
+  const { trigger } = useFormContext();
   const router = useRouter();
 
   const handleNextButton = async () => {
     /* const valid = await trigger(); // validasi zod dulu
         if (!valid) return; */
+
+    const valid = await trigger([
+      "nomor_ba",
+      "site",
+      "lokasi",
+      "teknisi",
+      "jabatan1",
+      "pengawas_lapangan",
+      "jabatan2",
+    ]);
+
+    if (!valid) {
+      alert("Terdapat Kesalahan, Cek Kembali Input Form");
+      return;
+    }
 
     router.push("/generate/preventif/ttd");
   };

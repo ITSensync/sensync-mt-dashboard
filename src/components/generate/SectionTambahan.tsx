@@ -17,7 +17,19 @@ export default function SectionTambahan() {
   const handleNextButton = async () => {
     /* const valid = await trigger(); // validasi zod dulu
     if (!valid) return; */
+    const valid = await trigger([
+      "nomor_ba",
+      "site",
+      "lokasi",
+      "teknisi",
+      "pengawas_lapangan",
+    ]);
 
+    if (!valid) {
+      alert("Terdapat Kesalahan, Cek Kembali Input Form");
+      return;
+    }
+    
     router.push("/generate/preventif/ttd");
   };
 

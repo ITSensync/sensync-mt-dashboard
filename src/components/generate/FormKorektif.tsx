@@ -10,7 +10,7 @@ import Label from "../form/Label";
 import FileInput from "../form/input/react-hook/FileInputHook";
 
 export default function FormKorektif() {
-  const { register } = useFormContext();
+  const { register, trigger } = useFormContext();
   const { handleSubmit } = useFormContext();
   const router = useRouter();
 
@@ -45,6 +45,18 @@ export default function FormKorektif() {
     /* const valid = await trigger(); // validasi zod dulu
         if (!valid) return; */
 
+    const valid = await trigger([
+      "nomor_ba",
+      "site",
+      "lokasi",
+      "teknisi",
+      "pengawas_lapangan",
+    ]);
+
+    if (!valid) {
+      alert("Terdapat Kesalahan, Cek Kembali Input Form");
+      return;
+    }
     router.push("/generate/korektif/ttd");
   };
 
