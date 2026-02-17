@@ -37,7 +37,7 @@ const listSparing = [
   {
     id: "sparing05",
     type: "sparing",
-    site: "Besland",
+    site: "Besland Pertiwi",
     city: "Purwakarta",
     domisili: "Non Bandung",
     img: "",
@@ -61,7 +61,7 @@ const listSparing = [
   {
     id: "sparing08",
     type: "sparing",
-    site: "Papyrus",
+    site: "Papyrus Sakti",
     city: "Bandung",
     domisili: "Bandung",
     img: "",

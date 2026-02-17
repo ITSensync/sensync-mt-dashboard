@@ -32,11 +32,11 @@ export default async function page({
       {type === "preventif" ? (
         idSite?.includes("base") ? (
           <FormPreventifBase />
-        ) : idSite === "sparing05" ? (
-          <FormBulanan />
         ) : (
           <FormPreventif />
         )
+      ) : type === "bulanan" ? (
+        <FormBulanan />
       ) : (
         <FormKorektif />
       )}

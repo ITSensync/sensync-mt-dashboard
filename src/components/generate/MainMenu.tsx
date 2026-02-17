@@ -1,7 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import { cookies } from "next/headers";
 
-export default function MainMenu() {
+export default async function MainMenu() {
+  const idSite = (await cookies()).get("id_device")?.value;
+
   return (
     <div className="grid grid-cold-1 md:grid-cols-2 xl:grid-cols-3 gap-6 p-4 rounded-2xl">
       <Link
@@ -48,26 +51,50 @@ export default function MainMenu() {
         </div>
         <p className="text-4xl font-bold text-brand-500">Korektif</p>
       </Link>
-      <div
-        className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
+      {idSite === "sparing05" ? (
+        <Link
+          href={"/generate/bulanan"}
+          className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
     transition-all duration-300 hover:cursor-pointer hover:scale-105 hover:shadow-2xl"
-      >
-        <div className="flex justify-center tems-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
-          >
-            <path
-              fillRule="evenodd"
-              d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
-              clipRule="evenodd"
-            />
-          </svg>
+        >
+          <div className="flex justify-center tems-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
+            >
+              <path
+                fillRule="evenodd"
+                d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+          <p className="text-4xl font-bold text-brand-500">Bulanan</p>
+        </Link>
+      ) : (
+        <div
+          className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
+    transition-all duration-300 hover:cursor-pointer hover:scale-105 hover:shadow-2xl"
+        >
+          <div className="flex justify-center tems-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
+            >
+              <path
+                fillRule="evenodd"
+                d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+          <p className="text-4xl font-bold text-brand-500">-</p>
         </div>
-        <p className="text-4xl font-bold text-brand-500">-</p>
-      </div>
+      )}
     </div>
   );
 }
