@@ -74,16 +74,15 @@ export default function SectionTTD() {
       }
 
       const idToken = await getAuthToken();
-      const idDevice = await getIdDevice();
+      // const idDevice = await getIdDevice();
       let result;
       if (pathname.includes("preventif")) {
         /* for (const [key, value] of formData.entries()) {
           console.log(key, value);
         } */
-        result =
-          idDevice === "sparing05"
-            ? await generateService.generateBulanan(idToken, formData)
-            : await generateService.generatePreventif(idToken, formData);
+        result = await generateService.generatePreventif(idToken, formData);
+      } else if (pathname.includes("bulanan")) {
+        result = await generateService.generateBulanan(idToken, formData);
       } else {
         result = await generateService.generateKorektif(idToken, formData);
       }
