@@ -2,7 +2,7 @@ import ComponentCard from "@/components/common/ComponentCard";
 import Input from "@/components/form/input/react-hook/InputFieldHook";
 import SelectField from "@/components/form/input/react-hook/SelectFieldHook";
 import Label from "@/components/form/Label";
-import { generateSiteCity, generateSiteName } from "@/lib/generate";
+import { generateSiteData } from "@/lib/generate";
 import { getIdDevice } from "@/lib/sessions";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
@@ -33,12 +33,11 @@ export default function SectionPerangkat() {
     const fetchIdDevice = async () => {
       const id = await getIdDevice();
 
-      const site = generateSiteName(id || "");
-      const city = generateSiteCity(id || "");
+      const siteData = generateSiteData(id || "");
 
       // ✅ set ke form (bukan defaultValue)
-      setValue("site", site);
-      setValue("lokasi", city);
+      setValue("site", siteData.site);
+      setValue("lokasi", siteData.city);
     };
 
     /* const fetchBANumber = async () => {

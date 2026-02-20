@@ -100,10 +100,11 @@ export class Generatervice {
   generatePreventif = async (
     authToken: any,
     body: any,
+    type: string,
     newTab?: Window | null,
   ) => {
     try {
-      const res = await this.instance.post("/preventif", body, {
+      const res = await this.instance.post(`/preventif/${type}`, body, {
         headers: authToken,
         // responseType: "blob",
       });

@@ -4,17 +4,13 @@ import React, { useState } from "react";
 import SectionKalibrasi from "./SectionKalibrasi";
 import ComponentCard from "../common/ComponentCard";
 import { useFormContext } from "react-hook-form";
-import {
-  generateSiteDomisili,
-  generateSiteName,
-  generateSiteType,
-} from "@/lib/generate";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { ApiError } from "../types/ApiError";
 import { generateService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import Label from "../form/Label";
 import FileInput from "../form/input/FileInput";
+import { generateSiteData } from "@/lib/generate";
 
 export default function FormDokumentasi() {
   const { register, handleSubmit, reset } = useFormContext();
@@ -61,13 +57,11 @@ export default function FormDokumentasi() {
     });
 
     const id = await getIdDevice();
-    const siteName = generateSiteName(id || "");
-    const siteType = generateSiteType(id || "");
-    const siteDomisili = generateSiteDomisili(id || "");
+    const siteData = generateSiteData(id || "");
 
-    formData.append("site", siteName);
-    formData.append("type", siteType);
-    formData.append("domisili", siteDomisili);
+    formData.append("site", siteData.site);
+    formData.append("type", siteData.type);
+    formData.append("domisili", siteData.domisili);
 
     for (const [key, value] of formData.entries()) {
       console.log(key, value);

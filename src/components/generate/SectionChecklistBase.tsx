@@ -11,15 +11,19 @@ const checklist = [
     name: "pembersihan_fisik",
   },
   {
-    text: "Pengecekan dan pembersihan pendingin udara intake / exhaust",
-    name: "pendingin_udara",
+    text: "Pengecekan dan Pembersihan",
+    name: "pengecekan_pembersihan",
   },
   {
     text: "Pengecekan sensor gas dan chamber gas",
     name: "sensor_gas",
   },
   {
-    text: "Pengecekan sensor partikulat (PM10/PM2.5) dan pembersihan jika perlu",
+    text: "Pengecekan sensor meteorologi",
+    name: "sensor_meteorologi",
+  },
+  {
+    text: "Pengecekan sensor partikulat",
     name: "sensor_partikulat",
   },
   {
@@ -39,10 +43,6 @@ const checklist = [
     name: "komunikasi_data",
   },
   {
-    text: "Pengecekan sensor meteorologi",
-    name: "sensor_meteorologi",
-  },
-  {
     text: "Penggantian silika gel",
     name: "silika_gel",
   },
@@ -55,8 +55,8 @@ const checklist = [
     name: "pagar_pelindung",
   },
   {
-    text: "Kalibrasi Sensor Gas (Zero dan Span Check/Adjustment)",
-    name: "kalibrasi_sensor_gas",
+    text: "Pengecekan CCTV",
+    name: "cctv",
   },
 ];
 export default function SectionChecklistBase() {
@@ -66,7 +66,7 @@ export default function SectionChecklistBase() {
       <div className="grid grid-cols-3 mb-4 text-gray-800 dark:text-white/90">
         <p className="font-semibold text-lg"></p>
         <p className="px-2 text-center">Status</p>
-        <p className="px-2 text-center">Catatan</p>
+        <p className="px-2 text-center">Keterangan</p>
       </div>
       {checklist.map((item, index) => (
         <div
@@ -91,7 +91,7 @@ export default function SectionChecklistBase() {
             </select>
           </div> */}
           <div className="flex justify-center">
-            <Input {...register(`${item.name}.catatan`)} />
+            <Input {...register(`${item.name}.keterangan`)} />
           </div>
         </div>
       ))}

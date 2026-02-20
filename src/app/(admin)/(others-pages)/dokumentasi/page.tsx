@@ -1,6 +1,6 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import FormDokumentasi from "@/components/generate/FormDokumentasi";
-import { generateSiteName } from "@/lib/generate";
+import { generateSiteData } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React from "react";
@@ -16,7 +16,7 @@ export default async function page() {
   return (
     <>
       <PageBreadcrumb
-        pageTitle={generateSiteName(idSite || "")}
+        pageTitle={generateSiteData(idSite || "").site}
         level1="Form Dokumentasi"
         level2=""
       />

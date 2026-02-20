@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import SectionKalibrasi from "./SectionKalibrasi";
 import ComponentCard from "../common/ComponentCard";
 import { useFormContext } from "react-hook-form";
-import { generateSiteName } from "@/lib/generate";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { ApiError } from "../types/ApiError";
 import { generateService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import { useRouter } from "next/navigation";
+import { generateSiteData } from "@/lib/generate";
 
 export default function FormKalibrasi() {
   const { handleSubmit, reset } = useFormContext();
@@ -36,8 +36,8 @@ export default function FormKalibrasi() {
     }); */
 
     const id = await getIdDevice();
-    const siteName = generateSiteName(id || "");
-    data["site"] = siteName;
+    const siteData = generateSiteData(id || "");
+    data["site"] = siteData.site;
     // formData.append("site", siteName);
 
     const auhtToken = await getAuthToken();

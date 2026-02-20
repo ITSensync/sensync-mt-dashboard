@@ -1,7 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import SectionTTD from "@/components/generate/SectionTTD";
 import UnderDev from "@/layout/UnderDev";
-import { generateSiteName } from "@/lib/generate";
+import { generateSiteData } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React from "react";
@@ -17,7 +17,7 @@ export default async function page() {
   return (
     <div>
       <PageBreadcrumb
-        pageTitle={generateSiteName(idSite || "")}
+        pageTitle={generateSiteData(idSite || "").site}
         level1="Jenis Pemeliharaan"
         level2={`TTD`}
       />

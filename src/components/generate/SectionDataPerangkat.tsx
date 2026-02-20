@@ -4,11 +4,7 @@
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import {
-  generateBANumber,
-  generateSiteCity,
-  generateSiteName,
-} from "@/lib/generate";
+import { generateBANumber, generateSiteData } from "@/lib/generate";
 import { getIdDevice } from "@/lib/sessions";
 
 import ComponentCard from "../common/ComponentCard";
@@ -41,12 +37,11 @@ export default function SectionDataPerangkat() {
     const fetchIdDevice = async () => {
       const id = await getIdDevice();
 
-      const site = generateSiteName(id || "");
-      const city = generateSiteCity(id || "");
+      const siteData = generateSiteData(id || "");
 
       // ✅ set ke form (bukan defaultValue)
-      setValue("site", site);
-      setValue("lokasi", city);
+      setValue("site", siteData.site);
+      setValue("lokasi", siteData.city);
     };
 
     /* const fetchBANumber = async () => {

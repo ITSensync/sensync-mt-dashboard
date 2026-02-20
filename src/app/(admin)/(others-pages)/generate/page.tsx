@@ -1,7 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import MainMenu from "@/components/generate/MainMenu";
 import UnderDev from "@/layout/UnderDev";
-import { generateSiteName } from "@/lib/generate";
+import { generateSiteData } from "@/lib/generate";
 import { Breadcrumbs } from "@mui/material";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -20,7 +20,7 @@ export default async function page() {
     // <UnderDev />
     <div>
       <PageBreadcrumb
-        pageTitle={generateSiteName(idSite || "")}
+        pageTitle={generateSiteData(idSite || "").site}
         level1="Jenis Pemeliharaan"
         level2=""
       />

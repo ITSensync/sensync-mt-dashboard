@@ -10,6 +10,7 @@ import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { generateService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import GenerateLoadingModal from "../ui/modal/GenerateLoadingModal";
+import { generateSiteData } from "@/lib/generate";
 
 export default function SectionTTD() {
   const { handleSubmit } = useFormContext();
@@ -80,7 +81,24 @@ export default function SectionTTD() {
         /* for (const [key, value] of formData.entries()) {
           console.log(key, value);
         } */
-        result = await generateService.generatePreventif(idToken, formData);
+        const id = await getIdDevice();
+        if (id?.includes("base")) {
+          // PREVENTIF API BASE
+          const siteData = generateSiteData(id || "");
+          formData.append("alamat", siteData.address);
+          result = await generateService.generatePreventif(
+            idToken,
+            formData,
+            "base",
+          );
+        } else {
+          // PREVENTIF API SPARING
+          result = await generateService.generatePreventif(
+            idToken,
+            formData,
+            "sparing",
+          );
+        }
       } else if (pathname.includes("bulanan")) {
         result = await generateService.generateBulanan(idToken, formData);
       } else {
