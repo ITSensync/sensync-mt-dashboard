@@ -47,7 +47,7 @@ const checklist = [
     name: "silika_gel",
   },
   {
-    text: "Pengeccekan display running text",
+    text: "Pengecekan display running text",
     name: "display_running_text",
   },
   {

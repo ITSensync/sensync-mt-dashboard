@@ -12,7 +12,13 @@ const teknisi = [
     nama: "Candra",
   },
   {
+    nama: "Candra Dwi Jayana",
+  },
+  {
     nama: "Nasrul",
+  },
+  {
+    nama: "Nasrul Mudzakir",
   },
   {
     nama: "Fachri",
