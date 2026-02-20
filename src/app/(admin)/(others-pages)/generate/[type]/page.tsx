@@ -3,6 +3,7 @@ import FormBulanan from "@/components/generate/FormBulanan/FormBulanan";
 import FormKorektif from "@/components/generate/FormKorektif";
 import FormPreventif from "@/components/generate/FormPreventif";
 import FormPreventifBase from "@/components/generate/FormPreventifBase";
+import FormSerahTerima from "@/components/generate/FormSerahTerima/FormSerahTerima";
 import UnderDev from "@/layout/UnderDev";
 import { generateSiteData } from "@/lib/generate";
 import { Metadata } from "next";
@@ -37,8 +38,10 @@ export default async function page({
         )
       ) : type === "bulanan" ? (
         <FormBulanan />
-      ) : (
+      ) : type === "korektif" ? (
         <FormKorektif />
+      ) : (
+        <FormSerahTerima />
       )}
       {/* <UnderDev /> */}
     </div>

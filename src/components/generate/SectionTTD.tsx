@@ -75,13 +75,12 @@ export default function SectionTTD() {
       }
 
       const idToken = await getAuthToken();
-      // const idDevice = await getIdDevice();
+      const id = await getIdDevice();
       let result;
       if (pathname.includes("preventif")) {
         /* for (const [key, value] of formData.entries()) {
           console.log(key, value);
         } */
-        const id = await getIdDevice();
         if (id?.includes("base")) {
           // PREVENTIF API BASE
           const siteData = generateSiteData(id || "");
@@ -101,6 +100,21 @@ export default function SectionTTD() {
         }
       } else if (pathname.includes("bulanan")) {
         result = await generateService.generateBulanan(idToken, formData);
+      } else if (pathname.includes("serah-terima")) {
+        // result = await generateService.generateBulanan(idToken, formData);
+        if (id?.includes("base")) {
+          result = await generateService.generateSerahTerima(
+            idToken,
+            formData,
+            "base",
+          );
+        } else {
+          result = await generateService.generateSerahTerima(
+            idToken,
+            formData,
+            "sparing",
+          );
+        }
       } else {
         result = await generateService.generateKorektif(idToken, formData);
       }

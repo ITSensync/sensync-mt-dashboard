@@ -51,7 +51,7 @@ export default async function MainMenu() {
         </div>
         <p className="text-4xl font-bold text-brand-500">Korektif</p>
       </Link>
-      {idSite === "sparing05" ? (
+      {idSite === "sparing05" && (
         <Link
           href={"/generate/bulanan"}
           className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
@@ -73,28 +73,24 @@ export default async function MainMenu() {
           </div>
           <p className="text-4xl font-bold text-brand-500">Bulanan</p>
         </Link>
-      ) : (
-        <div
-          className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
-    transition-all duration-300 hover:cursor-pointer hover:scale-105 hover:shadow-2xl"
-        >
-          <div className="flex justify-center tems-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-          <p className="text-4xl font-bold text-brand-500">-</p>
-        </div>
       )}
+      <Link
+        href={"/generate/serah-terima"}
+        className="h-[35vh] border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] rounded-2xl flex flex-col text-center justify-center gap-4 transform 
+    transition-all duration-300 hover:cursor-pointer hover:scale-105 hover:shadow-2xl"
+      >
+        <div className="flex justify-center tems-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="size-24 md:size-30 xl:size-36 text-gray-800 dark:text-white/90"
+          >
+            <path d="M12.378 1.602a.75.75 0 0 0-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03ZM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 0 0 .372-.648V7.93ZM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 0 0 .372.648l8.628 5.033Z" />
+          </svg>
+        </div>
+        <p className="text-4xl font-bold text-brand-500">Serah Terima</p>
+      </Link>
     </div>
   );
 }
