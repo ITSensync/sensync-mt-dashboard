@@ -12,7 +12,7 @@ export default function SectionInputAlat() {
   });
 
   return (
-    <ComponentCard title={"Data Penyerahan Alat"}>
+    <ComponentCard title={"Item Penyerahan/Penarikan Alat"}>
       <div className="space-y-3">
         {fields.map((field, index) => (
           <div key={field.id} className="grid grid-cols-[1fr_auto] gap-4">
