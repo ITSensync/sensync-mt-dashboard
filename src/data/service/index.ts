@@ -3,6 +3,7 @@ import { AdminService } from "./AdminService";
 import { AuthService } from "./AuthService";
 import { ChangenoteService } from "./ChangenoteService";
 import { DocumentService } from "./DocumentService";
+import { DokumentasiService } from "./DokumentasiService";
 import { Generatervice } from "./GenerateService";
 import { ReportService } from "./ReportService";
 import { SensorDataService } from "./SensorDataService";
@@ -15,3 +16,4 @@ export const adminService = new AdminService(`${process.env.API_URL}/admin`)
 export const changenoteService = new ChangenoteService(`${process.env.MT_API_URL}/changenote`)
 export const documentService = new DocumentService(`${process.env.MT_API_URL}/document`)
 export const generateService = new Generatervice(`${process.env.MT_API_URL}/generate`)
+export const dokumentasiService = new DokumentasiService(`${process.env.MT_API_URL}/generate`)

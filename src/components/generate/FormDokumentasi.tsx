@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
-import SectionKalibrasi from "./SectionKalibrasi";
 import ComponentCard from "../common/ComponentCard";
 import { useFormContext } from "react-hook-form";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { ApiError } from "../types/ApiError";
-import { generateService } from "@/data/service";
+import { dokumentasiService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import Label from "../form/Label";
-import FileInput from "../form/input/FileInput";
 import { generateSiteData } from "@/lib/generate";
 
 export default function FormDokumentasi() {
@@ -68,7 +66,7 @@ export default function FormDokumentasi() {
     }
 
     const auhtToken = await getAuthToken();
-    const response = await generateService.uploadDokumentasi(
+    const response = await dokumentasiService.uploadDokumentasi(
       auhtToken,
       formData,
     );
