@@ -185,6 +185,45 @@ export default function SectionDataPerangkat() {
               )}
             </fieldset>
           </div>
+
+          <div className="grid grid-cols-2 gap-10 mt-4">
+            <fieldset className="fieldset w-full">
+              <Label htmlFor="site">
+                Waktu Mulai <span className="text-red-500">*</span>
+              </Label>
+
+              <Input
+                type="time"
+                step={1}
+                {...register("start_time", {
+                  required: "Waktu mulai tidak boleh kosong",
+                })}
+              />
+              {errors.site && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.site.message as string}
+                </p>
+              )}
+            </fieldset>
+            <fieldset className="fieldset w-full">
+              <Label htmlFor="site">
+                Waktu Selesai <span className="text-red-500">*</span>
+              </Label>
+
+              <Input
+                type="time"
+                step={1}
+                {...register("end_time", {
+                  required: "Waktu selesai tidak boleh kosong",
+                })}
+              />
+              {errors.lokasi && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.lokasi.message as string}
+                </p>
+              )}
+            </fieldset>
+          </div>
         </div>
       </div>
     </ComponentCard>
