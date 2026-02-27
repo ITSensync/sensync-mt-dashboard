@@ -49,6 +49,8 @@ export default function FormPreventifBase() {
       "lokasi",
       "teknisi",
       "pengawas_lapangan",
+      "start_time",
+      "end_time",
     ]);
 
     if (!valid) {

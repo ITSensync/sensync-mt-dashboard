@@ -51,6 +51,8 @@ export default function FormKorektif() {
       "lokasi",
       "teknisi",
       "pengawas_lapangan",
+      "start_time",
+      "end_time",
     ]);
 
     if (!valid) {

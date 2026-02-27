@@ -198,9 +198,9 @@ export default function SectionDataPerangkat() {
                   required: "Waktu mulai tidak boleh kosong",
                 })}
               />
-              {errors.site && (
+              {errors.start_time && (
                 <p className="text-red-500 text-sm mt-1">
-                  {errors.site.message as string}
+                  {errors.start_time.message as string}
                 </p>
               )}
             </fieldset>
@@ -215,9 +215,9 @@ export default function SectionDataPerangkat() {
                   required: "Waktu selesai tidak boleh kosong",
                 })}
               />
-              {errors.lokasi && (
+              {errors.end_time && (
                 <p className="text-red-500 text-sm mt-1">
-                  {errors.lokasi.message as string}
+                  {errors.end_time.message as string}
                 </p>
               )}
             </fieldset>
