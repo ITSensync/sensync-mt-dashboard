@@ -194,7 +194,6 @@ export default function SectionDataPerangkat() {
 
               <Input
                 type="time"
-                step={1}
                 {...register("start_time", {
                   required: "Waktu mulai tidak boleh kosong",
                 })}
@@ -212,7 +211,6 @@ export default function SectionDataPerangkat() {
 
               <Input
                 type="time"
-                step={1}
                 {...register("end_time", {
                   required: "Waktu selesai tidak boleh kosong",
                 })}
