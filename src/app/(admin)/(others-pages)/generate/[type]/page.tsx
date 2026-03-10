@@ -31,7 +31,7 @@ export default async function page({
         level2={`Form ${type.replace(/\b\w/g, (c) => c.toUpperCase())}`}
       />
       {type === "preventif" ? (
-        idSite?.includes("base") ? (
+        idSite?.includes("base") || idSite?.includes("mini") ? (
           <FormPreventifBase />
         ) : (
           <FormPreventif />

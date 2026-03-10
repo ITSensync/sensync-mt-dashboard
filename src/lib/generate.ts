@@ -1,7 +1,7 @@
 import { documentService } from "@/data/service";
 import { getAuthToken } from "./sessions";
 
-const listSparing = [
+const listSite = [
   {
     id: "sparing01",
     type: "sparing",
@@ -147,10 +147,19 @@ const listSparing = [
     address: "",
     img: "",
   },
+  {
+    id: "mini01",
+    type: "aqms",
+    site: "Pertiwi Lestari",
+    city: "Karawang",
+    domisili: "",
+    address: "",
+    img: "",
+  },
 ];
 
 export const generateSiteData = (siteId: string) => {
-  const site = listSparing.find((s) => s.id === siteId);
+  const site = listSite.find((s) => s.id === siteId);
 
   if (!site) {
     return {

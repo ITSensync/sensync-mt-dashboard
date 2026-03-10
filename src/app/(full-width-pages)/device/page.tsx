@@ -94,12 +94,19 @@ const listBase = [
     site: "DLH Kab. Karawang",
     img: "",
   },
-]
+  {
+    id: "mini01",
+    site: "Pertiwi Lestari",
+    img: "",
+  },
+];
 
 export default function ChooseDevice() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <p className="text-3xl font-bold mb-8 text-center text-white/90">Pilih Site / Alat</p>
+      <p className="text-3xl font-bold mb-8 text-center text-white/90">
+        Pilih Site / Alat
+      </p>
       <p className="text-2xl font-semibold text-white/90 mb-6">QUA</p>
       <ListCard list={listSparing} />
       <div className="divider"></div>
