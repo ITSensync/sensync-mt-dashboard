@@ -261,6 +261,44 @@ export class Generatervice {
       });
   };
 
+  generateLaporanKalibrasi = async (authToken: any, body: any) => {
+    return this.instance
+      .post("/report-kalibrasi", body, {
+        headers: authToken,
+        responseType: "blob", // ✅ tambah ini
+      })
+      .then((res) => {
+        // ✅ Auto download dari sini
+        const disposition = res.headers["content-disposition"];
+        const filename =
+          disposition?.split('filename="')[1]?.replace('"', "") ??
+          "kalibrasi.docx";
+
+        const url = URL.createObjectURL(new Blob([res.data]));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        return res.data; // return blob kalau mau dipakai di frontend
+      })
+      .catch((error) => {
+        if (error.response) {
+          // Kalau error, response-nya blob — perlu di-parse dulu
+          return error.response.data.text().then((text: string) => {
+            const parsed = JSON.parse(text);
+            return { status: parsed.status, message: parsed.message };
+          });
+        }
+        return {
+          status: error.code,
+          message: error.message,
+          name: error.name,
+        };
+      });
+  };
+
   uploadDokumentasi = async (authToken: any, body: any) => {
     return this.instance
       .post("/dokumentasi", body, {

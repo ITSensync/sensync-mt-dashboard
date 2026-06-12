@@ -50,6 +50,11 @@ const navItems: NavItem[] = [
     name: "Dokumentasi",
     path: "/dokumentasi",
   },
+  {
+    icon: <FileIcon />,
+    name: "Laporan Kalibrasi",
+    path: "/laporan-kalibrasi",
+  },
 ];
 
 const navItemsAlternate: NavItem[] = [
@@ -72,6 +77,11 @@ const navItemsAlternate: NavItem[] = [
     icon: <VideoIcon />,
     name: "Dokumentasi",
     path: "/dokumentasi",
+  },
+  {
+    icon: <FileIcon />,
+    name: "Laporan Kalibrasi",
+    path: "/laporan-kalibrasi",
   },
 ];
 
