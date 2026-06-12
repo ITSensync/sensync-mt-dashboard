@@ -5,7 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
+  BoxIcon,
   ChevronDownIcon,
+  DocsIcon,
   FileIcon,
   HorizontaLDots,
   PencilIcon,
@@ -51,7 +53,7 @@ const navItems: NavItem[] = [
     path: "/dokumentasi",
   },
   {
-    icon: <FileIcon />,
+    icon: <BoxIcon />,
     name: "Laporan Kalibrasi",
     path: "/laporan-kalibrasi",
   },
@@ -79,7 +81,7 @@ const navItemsAlternate: NavItem[] = [
     path: "/dokumentasi",
   },
   {
-    icon: <FileIcon />,
+    icon: <BoxIcon />,
     name: "Laporan Kalibrasi",
     path: "/laporan-kalibrasi",
   },
