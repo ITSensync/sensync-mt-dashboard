@@ -77,6 +77,16 @@ const listSparing = [
     img: "",
   },
   {
+    id: "sparing14",
+    site: "SDO",
+    img: "",
+  },
+  {
+    id: "sparing15",
+    site: "Ayoetex",
+    img: "",
+  },
+  {
     id: "spinning",
     site: "Spinning",
     img: "",
