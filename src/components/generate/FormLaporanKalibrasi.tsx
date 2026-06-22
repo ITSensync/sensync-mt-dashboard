@@ -159,6 +159,7 @@ export default function FormLaporanKalibrasi() {
         code: response.status,
         message: response.message,
       });
+      setLoading(false);
       setToast(true);
       setTimeout(() => {
         setToast(false);
