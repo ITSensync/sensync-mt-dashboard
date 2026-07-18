@@ -10,8 +10,10 @@ import Input from "../form/input/InputField";
 import Label from "../form/Label";
 import ZodErrors from "../ui/alert/ZodErrors";
 import TextArea from "../form/input/TextArea";
-import { addChangenoteAction, editChangenoteAction } from "@/data/actions/FormChangenoteActions";
-import { format } from "path";
+import {
+  addChangenoteAction,
+  editChangenoteAction,
+} from "@/data/actions/FormChangenoteActions";
 import { formatCustomDate } from "@/lib/formatDate";
 
 const INITIAL_STATE = {
@@ -77,7 +79,7 @@ export default function FormChangenote({
     // setSensorName(initialSensorName);
 
     if (initChangenoteData) {
-      console.log(initChangenoteData)
+      console.log(initChangenoteData);
       setFormInitState({
         id: initChangenoteData.id,
         id_device: initChangenoteData.id_device || "",
@@ -162,52 +164,57 @@ export default function FormChangenote({
                 onChange={handleInputChange}
               />
             )}
-            <fieldset className="fieldset w-full">
-              <Label htmlFor="tanggal">
-                Tanggal <span className="text-red-500">*</span>
-              </Label>
-              <Input
-                type="date"
-                name="tanggal"
-                placeholder="John Doe"
-                defaultValue={formatCustomDate(formInitState.createdAt, "yyyy-MM-dd")}
-                onChange={handleInputChange}
-                required={true}
-              />
-              <span className="fieldset-label text-gray-800 dark:text-white/90">
-                <div className="flex flex-col gap-3">
-                  <ZodErrors
-                    error={
-                      formAddState?.zodErrors?.tanggal ||
-                      formEditState?.zodErrors?.tanggal
-                    }
-                  />
-                </div>
-              </span>
-            </fieldset>
-            <fieldset className="fieldset w-full">
-              <Label htmlFor="teknisi">
-                Teknisi <span className="text-red-500">*</span>
-              </Label>
-              <Input
-                type="text"
-                name="teknisi"
-                placeholder="John Doe"
-                defaultValue={formInitState.teknisi}
-                onChange={handleInputChange}
-                required={true}
-              />
-              <span className="fieldset-label text-gray-800 dark:text-white/90">
-                <div className="flex flex-col gap-3">
-                  <ZodErrors
-                    error={
-                      formAddState?.zodErrors?.teknisi ||
-                      formEditState?.zodErrors?.teknisi
-                    }
-                  />
-                </div>
-              </span>
-            </fieldset>
+            <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
+              <fieldset className="fieldset w-full">
+                <Label htmlFor="tanggal">
+                  Tanggal <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  type="date"
+                  name="tanggal"
+                  placeholder="John Doe"
+                  defaultValue={formatCustomDate(
+                    formInitState.createdAt,
+                    "yyyy-MM-dd",
+                  )}
+                  onChange={handleInputChange}
+                  required={true}
+                />
+                <span className="fieldset-label text-gray-800 dark:text-white/90">
+                  <div className="flex flex-col gap-3">
+                    <ZodErrors
+                      error={
+                        formAddState?.zodErrors?.tanggal ||
+                        formEditState?.zodErrors?.tanggal
+                      }
+                    />
+                  </div>
+                </span>
+              </fieldset>
+              <fieldset className="fieldset w-full">
+                <Label htmlFor="teknisi">
+                  Teknisi <span className="text-red-500">*</span>
+                </Label>
+                <Input
+                  type="text"
+                  name="teknisi"
+                  placeholder="John Doe"
+                  defaultValue={formInitState.teknisi}
+                  onChange={handleInputChange}
+                  required={true}
+                />
+                <span className="fieldset-label text-gray-800 dark:text-white/90">
+                  <div className="flex flex-col gap-3">
+                    <ZodErrors
+                      error={
+                        formAddState?.zodErrors?.teknisi ||
+                        formEditState?.zodErrors?.teknisi
+                      }
+                    />
+                  </div>
+                </span>
+              </fieldset>
+            </div>
             <fieldset className="fieldset w-full">
               <Label htmlFor="catatan">
                 Catatan Perubahan <span className="text-red-500">*</span>
