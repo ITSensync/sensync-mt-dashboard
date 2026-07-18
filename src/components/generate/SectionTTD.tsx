@@ -10,6 +10,7 @@ import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { generateService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import GenerateLoadingModal from "../ui/modal/GenerateLoadingModal";
+import { generateSiteData } from "@/lib/generate";
 
 export default function SectionTTD() {
   const { handleSubmit } = useFormContext();
@@ -74,16 +75,46 @@ export default function SectionTTD() {
       }
 
       const idToken = await getAuthToken();
-      const idDevice = await getIdDevice();
+      const id = await getIdDevice();
       let result;
       if (pathname.includes("preventif")) {
         /* for (const [key, value] of formData.entries()) {
           console.log(key, value);
         } */
-        result =
-          idDevice === "sparing05"
-            ? await generateService.generateBulanan(idToken, formData)
-            : await generateService.generatePreventif(idToken, formData);
+        if (id?.includes("base")) {
+          // PREVENTIF API BASE
+          const siteData = generateSiteData(id || "");
+          formData.append("alamat", siteData.address);
+          result = await generateService.generatePreventif(
+            idToken,
+            formData,
+            "base",
+          );
+        } else {
+          // PREVENTIF API SPARING
+          result = await generateService.generatePreventif(
+            idToken,
+            formData,
+            "sparing",
+          );
+        }
+      } else if (pathname.includes("bulanan")) {
+        result = await generateService.generateBulanan(idToken, formData);
+      } else if (pathname.includes("serah-terima")) {
+        // result = await generateService.generateBulanan(idToken, formData);
+        if (id?.includes("base")) {
+          result = await generateService.generateSerahTerima(
+            idToken,
+            formData,
+            "base",
+          );
+        } else {
+          result = await generateService.generateSerahTerima(
+            idToken,
+            formData,
+            "sparing",
+          );
+        }
       } else {
         result = await generateService.generateKorektif(idToken, formData);
       }

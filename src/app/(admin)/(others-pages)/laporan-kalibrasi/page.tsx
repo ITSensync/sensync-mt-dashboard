@@ -1,5 +1,6 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
-import SectionTTD from "@/components/generate/SectionTTD";
+import FormKalibrasi from "@/components/generate/FormKalibrasi";
+import FormLaporanKalibrasi from "@/components/generate/FormLaporanKalibrasi";
 import UnderDev from "@/layout/UnderDev";
 import { generateSiteData } from "@/lib/generate";
 import { Metadata } from "next";
@@ -7,7 +8,7 @@ import { cookies } from "next/headers";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Sensync Maintenance Dashboard | Form TTD",
+  title: "Sensync Maintenance Dashboard | Generate Kalibrasi",
   description: "This is Next.js Blank Page TailAdmin Dashboard Template",
 };
 
@@ -15,14 +16,14 @@ export default async function page() {
   const idSite = (await cookies()).get("id_device")?.value;
 
   return (
-    <div>
+    <>
       <PageBreadcrumb
         pageTitle={generateSiteData(idSite || "").site}
-        level1="Jenis Pemeliharaan"
-        level2={`TTD`}
+        level1="Form Laporan Kalibrasi"
+        level2=""
       />
-      {/* <UnderDev /> */}
-      <SectionTTD/>
-    </div>
+      <FormLaporanKalibrasi />
+      {/* <FormKalibrasi /> */}
+    </>
   );
 }

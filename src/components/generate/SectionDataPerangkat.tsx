@@ -4,11 +4,7 @@
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import {
-  generateBANumber,
-  generateSiteCity,
-  generateSiteName,
-} from "@/lib/generate";
+import { generateBANumber, generateSiteData } from "@/lib/generate";
 import { getIdDevice } from "@/lib/sessions";
 
 import ComponentCard from "../common/ComponentCard";
@@ -21,13 +17,19 @@ const teknisi = [
     nama: "Candra",
   },
   {
+    nama: "Candra Dwi Jayana",
+  },
+  {
     nama: "Nasrul",
   },
   {
-    nama: "Fachri",
+    nama: "Nasrul Mudzakir",
   },
   {
-    nama: "Pasya",
+    nama: "Syamil",
+  },
+  {
+    nama: "Kenza",
   },
 ];
 export default function SectionDataPerangkat() {
@@ -41,12 +43,11 @@ export default function SectionDataPerangkat() {
     const fetchIdDevice = async () => {
       const id = await getIdDevice();
 
-      const site = generateSiteName(id || "");
-      const city = generateSiteCity(id || "");
+      const siteData = generateSiteData(id || "");
 
       // ✅ set ke form (bukan defaultValue)
-      setValue("site", site);
-      setValue("lokasi", city);
+      setValue("site", siteData.site);
+      setValue("lokasi", siteData.city);
     };
 
     /* const fetchBANumber = async () => {
@@ -180,6 +181,43 @@ export default function SectionDataPerangkat() {
               {errors.pengawas_lapangan && (
                 <p className="text-red-500 text-sm mt-1">
                   {errors.pengawas_lapangan.message as string}
+                </p>
+              )}
+            </fieldset>
+          </div>
+
+          <div className="grid grid-cols-2 gap-10 mt-4">
+            <fieldset className="fieldset w-full">
+              <Label htmlFor="site">
+                Waktu Mulai <span className="text-red-500">*</span>
+              </Label>
+
+              <Input
+                type="time"
+                {...register("start_time", {
+                  required: "Waktu mulai tidak boleh kosong",
+                })}
+              />
+              {errors.start_time && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.start_time.message as string}
+                </p>
+              )}
+            </fieldset>
+            <fieldset className="fieldset w-full">
+              <Label htmlFor="site">
+                Waktu Selesai <span className="text-red-500">*</span>
+              </Label>
+
+              <Input
+                type="time"
+                {...register("end_time", {
+                  required: "Waktu selesai tidak boleh kosong",
+                })}
+              />
+              {errors.end_time && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.end_time.message as string}
                 </p>
               )}
             </fieldset>

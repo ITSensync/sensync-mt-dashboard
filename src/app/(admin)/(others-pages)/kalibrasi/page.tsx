@@ -1,7 +1,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import FormKalibrasi from "@/components/generate/FormKalibrasi";
 import UnderDev from "@/layout/UnderDev";
-import { generateSiteName } from "@/lib/generate";
+import { generateSiteData } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import React from "react";
@@ -17,7 +17,7 @@ export default async function page() {
   return (
     <>
       <PageBreadcrumb
-        pageTitle={generateSiteName(idSite || "")}
+        pageTitle={generateSiteData(idSite || "").site}
         level1="Form Kalibrasi"
         level2=""
       />

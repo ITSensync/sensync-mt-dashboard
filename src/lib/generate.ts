@@ -1,13 +1,14 @@
 import { documentService } from "@/data/service";
 import { getAuthToken } from "./sessions";
 
-const listSparing = [
+const listSite = [
   {
     id: "sparing01",
     type: "sparing",
     site: "Gistex",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -16,6 +17,7 @@ const listSparing = [
     site: "Indorama Polyester",
     city: "Purwakarta",
     domisili: "Non Bandung",
+    address: "",
     img: "",
   },
   {
@@ -24,6 +26,7 @@ const listSparing = [
     site: "PMT",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -32,6 +35,7 @@ const listSparing = [
     site: "Innojaya Tekstil",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -40,6 +44,7 @@ const listSparing = [
     site: "Besland Pertiwi",
     city: "Purwakarta",
     domisili: "Non Bandung",
+    address: "",
     img: "",
   },
   {
@@ -48,6 +53,7 @@ const listSparing = [
     site: "Indotaisei",
     city: "Purwakarta",
     domisili: "Non Bandung",
+    address: "",
     img: "",
   },
   {
@@ -56,6 +62,7 @@ const listSparing = [
     site: "Daliatex",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -64,6 +71,7 @@ const listSparing = [
     site: "Papyrus Sakti",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -72,6 +80,7 @@ const listSparing = [
     site: "Bintang Cipta Perkasa",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -80,6 +89,7 @@ const listSparing = [
     site: "Sinar Pangjaya",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -88,6 +98,7 @@ const listSparing = [
     site: "LPA",
     city: "Bekasi",
     domisili: "Non Bandung",
+    address: "",
     img: "",
   },
   {
@@ -96,6 +107,7 @@ const listSparing = [
     site: "Kertas Padalarang",
     city: "Bandung",
     domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -104,6 +116,25 @@ const listSparing = [
     site: "Sinar Sukses Mandiri",
     city: "Purwakarta",
     domisili: "Non Bandung",
+    address: "",
+    img: "",
+  },
+  {
+    id: "sparing14",
+    type: "sparing",
+    site: "Sari Dumai Oleo",
+    city: "Jakarta",
+    domisili: "Non Bandung",
+    address: "",
+    img: "",
+  },
+  {
+    id: "sparing15",
+    type: "sparing",
+    site: "Ayoe Indotama Textile",
+    city: "Cimahi",
+    domisili: "Bandung",
+    address: "",
     img: "",
   },
   {
@@ -112,6 +143,7 @@ const listSparing = [
     site: "Indorama Synthetics Div. Spinning",
     city: "Purwakarta",
     domisili: "Non Bandung",
+    address: "",
     img: "",
   },
   {
@@ -120,6 +152,8 @@ const listSparing = [
     site: "DLH Kota Bandung",
     city: "Bandung",
     domisili: "",
+    address:
+      "Jl. Sersan Bajuri No.5, Isola, Kec. Sukasari, Kota Bandung, Jawa Barat 40154",
     img: "",
   },
   {
@@ -128,29 +162,37 @@ const listSparing = [
     site: "DLH Kab. Karawang",
     city: "Karawang",
     domisili: "",
+    address: "",
+    img: "",
+  },
+  {
+    id: "mini01",
+    type: "aqms",
+    site: "Pertiwi Lestari",
+    city: "Karawang",
+    domisili: "",
+    address: "",
     img: "",
   },
 ];
 
-export const generateSiteName = (siteId: string) => {
-  const site = listSparing.find((sparing) => sparing.id === siteId);
-  return site ? site.site : "Unknown";
+export const generateSiteData = (siteId: string) => {
+  const site = listSite.find((s) => s.id === siteId);
+
+  if (!site) {
+    return {
+      id: "Unknown",
+      type: "Unknown",
+      site: "Unknown",
+      city: "Unknown",
+      domisili: "Unknown",
+      address: "",
+      img: "",
+    };
+  }
+
+  return site;
 };
-
-export const generateSiteCity = (siteId: string) => {
-  const site = listSparing.find((sparing) => sparing.id === siteId);
-  return site ? site.city : "Unknown";
-}
-
-export const generateSiteType = (siteId: string) => {
-  const site = listSparing.find((sparing) => sparing.id === siteId);
-  return site ? site.type : "Unknown";
-}
-
-export const generateSiteDomisili = (siteId: string) => {
-  const site = listSparing.find((sparing) => sparing.id === siteId);
-  return site ? site.domisili : "Unknown";
-}
 
 export const generateBANumber = async () => {
   const authToken = await getAuthToken();

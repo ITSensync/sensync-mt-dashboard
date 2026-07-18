@@ -100,10 +100,11 @@ export class Generatervice {
   generatePreventif = async (
     authToken: any,
     body: any,
+    type: string,
     newTab?: Window | null,
   ) => {
     try {
-      const res = await this.instance.post("/preventif", body, {
+      const res = await this.instance.post(`/preventif/${type}`, body, {
         headers: authToken,
         // responseType: "blob",
       });
@@ -231,6 +232,70 @@ export class Generatervice {
           };
           return errorResponse;
         }
+      });
+  };
+
+  generateSerahTerima = async (authToken: any, body: any, type: string) => {
+    return this.instance
+      .post(`/serah-terima/${type}`, body, {
+        headers: authToken,
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch(function (error) {
+        if (error.response) {
+          const errorResponse = {
+            status: error.response.data.status,
+            message: error.response.data.message,
+          };
+          return errorResponse;
+        } else {
+          const errorResponse = {
+            status: error.code,
+            message: error.message,
+            name: error.name,
+          };
+          return errorResponse;
+        }
+      });
+  };
+
+  generateLaporanKalibrasi = async (authToken: any, body: any) => {
+    return this.instance
+      .post("/report-kalibrasi", body, {
+        headers: authToken,
+        responseType: "blob", // ✅ tambah ini
+      })
+      .then((res) => {
+        // ✅ Auto download dari sini
+        const disposition = res.headers["content-disposition"];
+        const filename =
+          disposition?.split('filename="')[1]?.replace('"', "") ??
+          "kalibrasi.docx";
+
+        const url = URL.createObjectURL(new Blob([res.data]));
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+
+        return res.data; // return blob kalau mau dipakai di frontend
+      })
+      .catch((error) => {
+        if (error.response) {
+          // Kalau error, response-nya blob — perlu di-parse dulu
+          return error.response.data.text().then((text: string) => {
+            const parsed = JSON.parse(text);
+            return { status: parsed.status, message: parsed.message };
+          });
+        }
+        return {
+          status: error.code,
+          message: error.message,
+          name: error.name,
+        };
       });
   };
 

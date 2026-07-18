@@ -23,13 +23,15 @@ export default function SectionTambahan() {
       "lokasi",
       "teknisi",
       "pengawas_lapangan",
+      "start_time",
+      "end_time",
     ]);
 
     if (!valid) {
       alert("Terdapat Kesalahan, Cek Kembali Input Form");
       return;
     }
-    
+
     router.push("/generate/preventif/ttd");
   };
 

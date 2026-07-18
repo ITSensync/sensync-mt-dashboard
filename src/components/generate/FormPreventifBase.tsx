@@ -10,7 +10,7 @@ import Label from "../form/Label";
 import FileInput from "../form/input/react-hook/FileInputHook";
 
 export default function FormPreventifBase() {
-  const { register } = useFormContext();
+  const { register, trigger } = useFormContext();
   const router = useRouter();
 
   /* const onSubmit = async (data: any) => {
@@ -43,6 +43,20 @@ export default function FormPreventifBase() {
   const handleNextButton = async () => {
     /* const valid = await trigger(); // validasi zod dulu
         if (!valid) return; */
+    const valid = await trigger([
+      "nomor_ba",
+      "site",
+      "lokasi",
+      "teknisi",
+      "pengawas_lapangan",
+      "start_time",
+      "end_time",
+    ]);
+
+    if (!valid) {
+      alert("Terdapat Kesalahan, Cek Kembali Input Form");
+      return;
+    }
 
     router.push("/generate/preventif/ttd");
   };
