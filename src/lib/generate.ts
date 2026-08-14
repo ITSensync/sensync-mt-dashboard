@@ -174,6 +174,15 @@ const listSite = [
     address: "",
     img: "",
   },
+  {
+    id: "mini02",
+    type: "aqms",
+    site: "Indotaisei",
+    city: "Purwakarta",
+    domisili: "",
+    address: "",
+    img: "",
+  },
 ];
 
 export const generateSiteData = (siteId: string) => {

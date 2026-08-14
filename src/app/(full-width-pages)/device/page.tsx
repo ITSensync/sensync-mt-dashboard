@@ -109,6 +109,11 @@ const listBase = [
     site: "Pertiwi Lestari",
     img: "",
   },
+  {
+    id: "mini02",
+    site: "Indotaisei",
+    img: "",
+  },
 ];
 
 export default function ChooseDevice() {
