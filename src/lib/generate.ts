@@ -140,7 +140,7 @@ const listSite = [
   {
     id: "sparing16",
     type: "sparing",
-    site: "Urase",
+    site: "Urase Prima",
     city: "Purwakarta",
     domisili: "Non Bandung",
     address: "",
