@@ -138,6 +138,15 @@ const listSite = [
     img: "",
   },
   {
+    id: "sparing16",
+    type: "sparing",
+    site: "Urase",
+    city: "Purwakarta",
+    domisili: "Non Bandung",
+    address: "",
+    img: "",
+  },
+  {
     id: "spinning",
     type: "sparing",
     site: "Indorama Synthetics Div. Spinning",

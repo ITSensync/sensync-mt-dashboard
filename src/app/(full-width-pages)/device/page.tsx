@@ -87,6 +87,11 @@ const listSparing = [
     img: "",
   },
   {
+    id: "sparing16",
+    site: "Urase",
+    img: "",
+  },
+  {
     id: "spinning",
     site: "Spinning",
     img: "",

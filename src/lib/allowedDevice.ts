@@ -1,1 +1,1 @@
-export const ADJUSMENT_ALLOWED_DEVICES = ["sparing08", "sparing05", "sparing12", "sparing13", "sparing14", "sparing15"];
+export const ADJUSMENT_ALLOWED_DEVICES = ["sparing08", "sparing05", "sparing12", "sparing13", "sparing14", "sparing15", "sparing16"];
