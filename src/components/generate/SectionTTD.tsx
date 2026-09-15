@@ -88,7 +88,7 @@ export default function SectionTTD() {
           result = await generateService.generatePreventif(
             idToken,
             formData,
-            "base",
+            id?.includes("base") ? "base" : "mini",
           );
         } else {
           // PREVENTIF API SPARING
