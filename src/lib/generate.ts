@@ -187,7 +187,7 @@ const listSite = [
     id: "mini02",
     type: "aqms",
     site: "Indotaisei",
-    city: "Purwakarta",
+    city: "Cikampek",
     domisili: "",
     address: "",
     img: "",

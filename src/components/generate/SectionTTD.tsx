@@ -81,7 +81,7 @@ export default function SectionTTD() {
         /* for (const [key, value] of formData.entries()) {
           console.log(key, value);
         } */
-        if (id?.includes("base")) {
+        if (id?.includes("base") || id?.includes("mini")) {
           // PREVENTIF API BASE
           const siteData = generateSiteData(id || "");
           formData.append("alamat", siteData.address);
@@ -102,7 +102,7 @@ export default function SectionTTD() {
         result = await generateService.generateBulanan(idToken, formData);
       } else if (pathname.includes("serah-terima")) {
         // result = await generateService.generateBulanan(idToken, formData);
-        if (id?.includes("base")) {
+        if (id?.includes("base") || id?.includes("mini")) {
           result = await generateService.generateSerahTerima(
             idToken,
             formData,
