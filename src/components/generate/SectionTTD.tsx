@@ -92,6 +92,7 @@ export default function SectionTTD() {
           );
         } else {
           // PREVENTIF API SPARING
+          formData.append("id_device", id || "");
           result = await generateService.generatePreventif(
             idToken,
             formData,

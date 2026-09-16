@@ -62,6 +62,13 @@ export const formChangenoteSchema = z.object({
   catatan: z.string().min(1).trim(),
 });
 
+export const formLogSchema = z.object({
+  tanggal: z.string().min(1).trim(),
+  teknisi: z.string().min(1).trim(),
+  keterangan: z.string().min(1).trim(),
+  opsi: z.string().min(1).trim(),
+});
+
 export const formReportSchema = z.object({
   operator_name: z.string().trim(),
   detail: z.string().min(1).trim(),

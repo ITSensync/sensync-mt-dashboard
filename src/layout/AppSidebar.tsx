@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
   BoxIcon,
+  CheckLineIcon,
   ChevronDownIcon,
   DocsIcon,
   FileIcon,
@@ -57,6 +58,11 @@ const navItems: NavItem[] = [
     name: "Laporan Kalibrasi",
     path: "/laporan-kalibrasi",
   },
+  {
+    icon: <CheckLineIcon />,
+    name: "Log Maintenance",
+    path: "/log-maintenance",
+  },
 ];
 
 const navItemsAlternate: NavItem[] = [
@@ -84,6 +90,11 @@ const navItemsAlternate: NavItem[] = [
     icon: <BoxIcon />,
     name: "Laporan Kalibrasi",
     path: "/laporan-kalibrasi",
+  },
+  {
+    icon: <CheckLineIcon />,
+    name: "Log Maintenance",
+    path: "/log-maintenance",
   },
 ];
 
