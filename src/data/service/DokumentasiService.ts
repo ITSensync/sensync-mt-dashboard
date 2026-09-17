@@ -39,4 +39,25 @@ export class DokumentasiService {
         }
       });
   };
+
+  getDokumentasi = async (authToken: any, body: any) => {
+    return this.instance
+      .post("/", body, {
+        headers: authToken,
+      })
+      .then((res) => res.data)
+      .catch(function (error) {
+        if (error.response) {
+          return {
+            status: error.response.data.status || error.response.status,
+            message: error.response.data.message,
+          };
+        }
+
+        return {
+          status: error.code,
+          message: error.message,
+        };
+      });
+  };
 }

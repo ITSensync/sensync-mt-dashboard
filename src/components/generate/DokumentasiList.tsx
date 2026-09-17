@@ -1,6 +1,6 @@
 "use client";
 
-import { photoService } from "@/data/service";
+import { dokumentasiService } from "@/data/service";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { useEffect, useState } from "react";
 import ComponentCard from "../common/ComponentCard";
@@ -64,7 +64,7 @@ export default function DokumentasiList({
       }
 
       try {
-        const response = (await photoService.getDokumentasi(
+        const response = (await dokumentasiService.getDokumentasi(
           await getAuthToken(),
           {
             id_device: idDevice,

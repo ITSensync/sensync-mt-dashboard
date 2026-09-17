@@ -19,5 +19,4 @@ export const changenoteService = new ChangenoteService(`${process.env.MT_API_URL
 export const logService = new LogService(`${process.env.MT_API_URL}/log`)
 export const documentService = new DocumentService(`${process.env.MT_API_URL}/document`)
 export const generateService = new Generatervice(`${process.env.MT_API_URL}/generate`)
-export const dokumentasiService = new DokumentasiService(`${process.env.MT_API_URL}/generate`)
-export const photoService = new PhotoService(`${process.env.MT_API_URL}/photo`)
+export const dokumentasiService = new DokumentasiService(`${process.env.MT_API_URL}/photo`)
