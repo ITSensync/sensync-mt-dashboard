@@ -1,4 +1,5 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import FileBAList from "@/components/generate/FileBAList";
 import MainMenu from "@/components/generate/MainMenu";
 import UnderDev from "@/layout/UnderDev";
 import { generateSiteData } from "@/lib/generate";
@@ -25,6 +26,9 @@ export default async function page() {
         level2=""
       />
       <MainMenu />
+      <div className="mt-6">
+        <FileBAList />
+      </div>
     </div>
   );
 }

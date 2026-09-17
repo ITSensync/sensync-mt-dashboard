@@ -6,26 +6,7 @@ import { useEffect, useState } from "react";
 import ComponentCard from "../common/ComponentCard";
 import Image from "next/image";
 import { generateSiteData, normalizeSite } from "@/lib/generate";
-
-interface DokumentasiPhoto {
-  id: number;
-  attachmentId: number;
-  name: string;
-  mimetype: string;
-  url: string;
-  publicUrl: string;
-}
-
-interface DokumentasiGroup {
-  tanggal: string;
-  data: DokumentasiPhoto[];
-}
-
-interface DokumentasiResponse {
-  status?: number;
-  message?: string;
-  data?: DokumentasiGroup[];
-}
+import { FileGroup, FileResponse } from "../types/File";
 
 const defaultFolderPath = ["Maintenance Sparing Non Bandung", "SSM"];
 const groupsPerPage = 3;
@@ -35,7 +16,7 @@ export default function DokumentasiList({
 }: {
   folderPath?: string[];
 }) {
-  const [groups, setGroups] = useState<DokumentasiGroup[]>([]);
+  const [groups, setGroups] = useState<FileGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchDate, setSearchDate] = useState("");
@@ -70,7 +51,7 @@ export default function DokumentasiList({
             id_device: idDevice,
             folder_path: pathFolder,
           },
-        )) as DokumentasiResponse;
+        )) as FileResponse;
 
         if (response.status !== 200) {
           setError(response.message || "Dokumentasi gagal dimuat.");
@@ -89,7 +70,7 @@ export default function DokumentasiList({
   }, [folderPath]);
 
   const filteredGroups = groups.filter((group) =>
-    group.tanggal.toLowerCase().includes(searchDate.trim().toLowerCase()),
+    group.parent.toLowerCase().includes(searchDate.trim().toLowerCase()),
   );
   const totalPages = Math.ceil(filteredGroups.length / groupsPerPage);
   const visibleGroups = filteredGroups.slice(
@@ -143,10 +124,10 @@ export default function DokumentasiList({
       {!loading && !error && visibleGroups.length > 0 && (
         <div className="space-y-8">
           {visibleGroups.map((group) => (
-            <section key={group.tanggal}>
+            <section key={group.parent}>
               <div className="mb-3 flex items-center justify-between gap-3">
                 <h4 className="font-semibold text-gray-800 dark:text-white/90">
-                  {group.tanggal}
+                  {group.parent}
                 </h4>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
                   {group.data.length} foto

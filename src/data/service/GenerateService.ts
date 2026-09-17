@@ -299,29 +299,24 @@ export class Generatervice {
       });
   };
 
-  uploadDokumentasi = async (authToken: any, body: any) => {
+  getFileBA = async (authToken: any, body: any) => {
     return this.instance
-      .post("/dokumentasi", body, {
+      .post("/", body, {
         headers: authToken,
       })
-      .then((res) => {
-        return res.data;
-      })
+      .then((res) => res.data)
       .catch(function (error) {
         if (error.response) {
-          const errorResponse = {
-            status: error.response.data.status,
+          return {
+            status: error.response.data.status || error.response.status,
             message: error.response.data.message,
           };
-          return errorResponse;
-        } else {
-          const errorResponse = {
-            status: error.code,
-            message: error.message,
-            name: error.name,
-          };
-          return errorResponse;
         }
+
+        return {
+          status: error.code,
+          message: error.message,
+        };
       });
   };
 }
