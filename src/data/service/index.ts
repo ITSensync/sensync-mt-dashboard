@@ -6,7 +6,6 @@ import { DocumentService } from "./DocumentService";
 import { DokumentasiService } from "./DokumentasiService";
 import { Generatervice } from "./GenerateService";
 import { LogService } from "./LogService";
-import { PhotoService } from "./PhotoService";
 import { ReportService } from "./ReportService";
 import { SensorDataService } from "./SensorDataService";
 
