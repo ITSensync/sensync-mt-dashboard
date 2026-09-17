@@ -212,6 +212,35 @@ export const generateSiteData = (siteId: string) => {
   return site;
 };
 
+export const normalizeSite = (site: string) => {
+  switch (site) {
+    case "Sinar Sukses Mandiri":
+      site = "SSM";
+      break;
+    case "Bintang Cipta Perkasa":
+      site = "BCP";
+      break;
+    case "Indorama Synthetics Div. Spinning":
+      site = "Spinning";
+      break;
+    case "Besland Pertiwi":
+      site = "Besland";
+      break;
+    case "Papyrus Sakti":
+      site = "Papyrus";
+      break;
+    case "Sari Dumai Oleo":
+      site = "SDO";
+      break;
+    case "Ayoe Indotama Textile":
+      site = "Ayoetex";
+      break;
+    default:
+      break;
+  }
+  return site;
+}
+
 export const generateBANumber = async () => {
   const authToken = await getAuthToken();
   const response = await documentService.getLatestNumber(authToken);

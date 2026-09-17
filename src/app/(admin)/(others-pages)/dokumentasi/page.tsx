@@ -1,5 +1,6 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import FormDokumentasi from "@/components/generate/FormDokumentasi";
+import DokumentasiList from "@/components/generate/DokumentasiList";
 import { generateSiteData } from "@/lib/generate";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -21,6 +22,9 @@ export default async function page() {
         level2=""
       />
       <FormDokumentasi />
+      <div className="mt-6">
+        <DokumentasiList />
+      </div>
     </>
   );
 }

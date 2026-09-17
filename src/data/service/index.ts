@@ -6,6 +6,7 @@ import { DocumentService } from "./DocumentService";
 import { DokumentasiService } from "./DokumentasiService";
 import { Generatervice } from "./GenerateService";
 import { LogService } from "./LogService";
+import { PhotoService } from "./PhotoService";
 import { ReportService } from "./ReportService";
 import { SensorDataService } from "./SensorDataService";
 
@@ -19,3 +20,4 @@ export const logService = new LogService(`${process.env.MT_API_URL}/log`)
 export const documentService = new DocumentService(`${process.env.MT_API_URL}/document`)
 export const generateService = new Generatervice(`${process.env.MT_API_URL}/generate`)
 export const dokumentasiService = new DokumentasiService(`${process.env.MT_API_URL}/generate`)
+export const photoService = new PhotoService(`${process.env.MT_API_URL}/photo`)

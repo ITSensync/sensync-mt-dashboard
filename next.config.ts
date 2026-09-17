@@ -22,6 +22,16 @@ const nextConfig: NextConfig = {
     authInterrupts: true,
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'gaibsti.odoo.com',
+        pathname: '/web/content/**',
+      },
+    ],
+  },
+
   async rewrites() {
     const hostUrl = process.env.HOST_URL;
 
