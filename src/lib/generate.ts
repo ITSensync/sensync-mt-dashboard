@@ -176,7 +176,7 @@ const listSite = [
   },
   {
     id: "mini01",
-    type: "aqms",
+    type: "aqms_mini",
     site: "Pertiwi Lestari",
     city: "Karawang",
     domisili: "",
@@ -185,7 +185,7 @@ const listSite = [
   },
   {
     id: "mini02",
-    type: "aqms",
+    type: "aqms_mini",
     site: "Indotaisei",
     city: "Cikampek",
     domisili: "",
