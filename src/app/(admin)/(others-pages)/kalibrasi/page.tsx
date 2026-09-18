@@ -1,4 +1,5 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
+import FileKalibrasiList from "@/components/generate/FileKalibrasiList";
 import FormKalibrasi from "@/components/generate/FormKalibrasi";
 import UnderDev from "@/layout/UnderDev";
 import { generateSiteData } from "@/lib/generate";
@@ -22,6 +23,11 @@ export default async function page() {
         level2=""
       />
       <FormKalibrasi />
+      {idSite?.includes("sparing") && (
+        <div className="mt-6">
+          <FileKalibrasiList />
+        </div>
+      )}
     </>
   );
 }
