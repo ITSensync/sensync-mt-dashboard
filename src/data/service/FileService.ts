@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance } from "axios";
 
-export class DokumentasiService {
+export class FileService {
   protected readonly instance: AxiosInstance;
 
   public constructor(url: string) {
@@ -40,7 +40,7 @@ export class DokumentasiService {
       });
   };
 
-  getDokumentasi = async (authToken: any, body: any) => {
+  getFiles = async (authToken: any, body: any) => {
     return this.instance
       .post("/", body, {
         headers: authToken,

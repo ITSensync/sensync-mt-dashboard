@@ -5,10 +5,10 @@ import ComponentCard from "../common/ComponentCard";
 import { useFormContext } from "react-hook-form";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { ApiError } from "../types/ApiError";
-import { dokumentasiService } from "@/data/service";
 import SuccessModal from "../ui/modal/SuccessModal";
 import Label from "../form/Label";
 import { generateSiteData } from "@/lib/generate";
+import { fileService } from "@/data/service";
 
 export default function FormDokumentasi() {
   const { register, handleSubmit, reset } = useFormContext();
@@ -66,7 +66,7 @@ export default function FormDokumentasi() {
     }
 
     const auhtToken = await getAuthToken();
-    const response = await dokumentasiService.uploadDokumentasi(
+    const response = await fileService.uploadDokumentasi(
       auhtToken,
       formData,
     );

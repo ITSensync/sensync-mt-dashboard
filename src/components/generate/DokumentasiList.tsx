@@ -1,12 +1,12 @@
 "use client";
 
-import { dokumentasiService } from "@/data/service";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { useEffect, useState } from "react";
 import ComponentCard from "../common/ComponentCard";
 import Image from "next/image";
 import { generateSiteData, normalizeSite } from "@/lib/generate";
 import { FileGroup, FileResponse } from "../types/File";
+import { fileService } from "@/data/service";
 
 const defaultFolderPath = ["Maintenance Sparing Non Bandung", "SSM"];
 const groupsPerPage = 3;
@@ -45,7 +45,7 @@ export default function DokumentasiList({
       }
 
       try {
-        const response = (await dokumentasiService.getDokumentasi(
+        const response = (await fileService.getFiles(
           await getAuthToken(),
           {
             id_device: idDevice,
