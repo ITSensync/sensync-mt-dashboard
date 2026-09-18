@@ -7,6 +7,7 @@ import Image from "next/image";
 import { generateSiteData, normalizeSite } from "@/lib/generate";
 import { FileGroup, FileResponse } from "../types/File";
 import { fileService } from "@/data/service";
+import { DownloadIcon } from "@/icons";
 
 const defaultFolderPath = ["Maintenance Sparing Non Bandung", "SSM"];
 const groupsPerPage = 3;
@@ -137,33 +138,52 @@ export default function DokumentasiList({
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {group.data.map((photo) => {
                   const originalUrl = photo.publicUrl;
-                  console.log(originalUrl);
+                  const downloadedUrl = photo.url;
 
                   return (
-                    <a
+                    <div
                       key={photo.id}
-                      href={originalUrl}
-                      target="_blank"
-                      rel="noreferrer"
                       className="group overflow-hidden rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-900"
                       title={`Buka ${photo.name}`}
                     >
-                      <div className="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800">
-                        <Image
-                          src={originalUrl}
-                          width={320}
-                          height={320}
-                          quality={60}
-                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                          alt={photo.name}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
-                        />
+                      <a
+                        href={originalUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Preview ${photo.name}`}
+                      >
+                        <div className="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-800">
+                          <Image
+                            src={originalUrl}
+                            width={320}
+                            height={320}
+                            quality={60}
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                            alt={photo.name}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                          />
+                        </div>
+                      </a>
+                      <div className="flex items-center justify-between gap-2 px-2 py-2">
+                        <p
+                          className="min-w-0 truncate text-xs text-gray-600 dark:text-gray-300"
+                          title={photo.name}
+                        >
+                          {photo.name}
+                        </p>
+                        <a
+                          href={downloadedUrl}
+                          download={photo.name}
+                          onClick={(event) => event.stopPropagation()}
+                          aria-label={`Download ${photo.name}`}
+                          title="Download"
+                          className="shrink-0 text-green-600 transition hover:text-green-800 dark:text-green-400 dark:hover:text-green-300"
+                        >
+                          <DownloadIcon className="size-5 fill-current" />
+                        </a>
                       </div>
-                      <p className="truncate px-2 py-2 text-xs text-gray-600 dark:text-gray-300">
-                        {photo.name}
-                      </p>
-                    </a>
+                    </div>
                   );
                 })}
               </div>
