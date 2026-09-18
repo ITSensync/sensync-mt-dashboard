@@ -1,6 +1,6 @@
 "use client";
 
-import { generateService } from "@/data/service";
+import { fileService } from "@/data/service";
 import { getAuthToken, getIdDevice } from "@/lib/sessions";
 import { useEffect, useState } from "react";
 import ComponentCard from "../common/ComponentCard";
@@ -9,9 +9,7 @@ import { FileGroup, FileResponse } from "../types/File";
 import { DownloadIcon, EyeIcon } from "@/icons";
 import { formatCreatedAtWib } from "@/lib/formatDate";
 
-
-
-const defaultFolderPath = ["Maintenance Sparing Non Bandung", "SSM"];
+const defaultFolderPath = ["Maintenance Sparing Non Bandung", "Lorem Ipsum"];
 
 export default function FileBAList({
   folderPath = defaultFolderPath,
@@ -28,7 +26,14 @@ export default function FileBAList({
       const idDevice = await getIdDevice();
       const siteData = await generateSiteData(idDevice || "");
       const siteName = normalizeSite(siteData.site);
-      const pathFolder: string[] = [`Berita Acara`, siteName];
+      const pathFolder: string[] = [
+        `Berita Acara`,
+        idDevice?.includes("base")
+          ? `BASE ${siteName}`
+          : idDevice?.includes("mini")
+            ? `MINI ${siteName}`
+            : siteName,
+      ];
 
       if (!idDevice) {
         setError("ID device tidak ditemukan.");
@@ -37,13 +42,10 @@ export default function FileBAList({
       }
 
       try {
-        const response = (await generateService.getFileBA(
-          await getAuthToken(),
-          {
-            id_device: idDevice,
-            folder_path: pathFolder,
-          },
-        )) as FileResponse;
+        const response = (await fileService.getFiles(await getAuthToken(), {
+          id_device: idDevice,
+          folder_path: pathFolder,
+        })) as FileResponse;
 
         if (response.status !== 200) {
           setError(response.message || "Dokumentasi gagal dimuat.");
@@ -130,10 +132,21 @@ export default function FileBAList({
                 <table className="w-full min-w-[640px] text-left text-sm">
                   <thead className="bg-gray-50 text-xs uppercase text-gray-500 dark:bg-gray-900 dark:text-gray-400">
                     <tr>
-                      <th scope="col" className="px-4 py-3 font-medium">No</th>
-                      <th scope="col" className="px-4 py-3 font-medium">Nama File</th>
-                      <th scope="col" className="px-4 py-3 font-medium">Tanggal</th>
-                      <th scope="col" className="px-4 py-3 text-right font-medium">Aksi</th>
+                      <th scope="col" className="px-4 py-3 font-medium">
+                        No
+                      </th>
+                      <th scope="col" className="px-4 py-3 font-medium">
+                        Nama File
+                      </th>
+                      <th scope="col" className="px-4 py-3 font-medium">
+                        Tanggal
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 py-3 text-right font-medium"
+                      >
+                        Aksi
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -142,9 +155,17 @@ export default function FileBAList({
                       const downloadedUrl = file.url;
 
                       return (
-                        <tr key={file.id} className="text-gray-700 dark:text-gray-300">
-                          <td className="whitespace-nowrap px-4 py-3">{index + 1}</td>
-                          <td className="max-w-[280px] truncate px-4 py-3 font-medium" title={file.name}>
+                        <tr
+                          key={file.id}
+                          className="text-gray-700 dark:text-gray-300"
+                        >
+                          <td className="whitespace-nowrap px-4 py-3">
+                            {index + 1}
+                          </td>
+                          <td
+                            className="max-w-[280px] truncate px-4 py-3 font-medium"
+                            title={file.name}
+                          >
                             {file.name}
                           </td>
                           <td className="whitespace-nowrap px-4 py-3">

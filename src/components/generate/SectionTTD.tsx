@@ -117,6 +117,10 @@ export default function SectionTTD() {
           );
         }
       } else {
+        formData.append(
+          "type",
+          id?.includes("base") || id?.includes("mini") ? id : "sparing",
+        );
         result = await generateService.generateKorektif(idToken, formData);
       }
 
