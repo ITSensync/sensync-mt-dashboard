@@ -16,7 +16,7 @@ export class FileService {
 
   uploadDokumentasi = async (authToken: any, body: any) => {
     return this.instance
-      .post("/dokumentasi", body, {
+      .post("/upload", body, {
         headers: authToken,
       })
       .then((res) => {
