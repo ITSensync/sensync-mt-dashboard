@@ -31,6 +31,9 @@ const teknisi = [
   {
     nama: "Kenza",
   },
+  {
+    nama: "Zaky",
+  },
 ];
 export default function SectionDataPerangkat() {
   const {
