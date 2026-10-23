@@ -28,7 +28,7 @@ export default function FormBulanan() {
       return;
     }
 
-    router.push("/generate/preventif/ttd");
+    router.push("/generate/bulanan/ttd");
   };
 
   const handleBackBtn = () => {
