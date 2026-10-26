@@ -91,7 +91,7 @@ export default function FormKalibrasi() {
           </div>
         </div>
       )}
-      <SuccessModal message={"Successfull Generate Kalibrasi File"} />
+      <SuccessModal message={"Successful Generate Kalibrasi File"} />
       <form
         className="grid grid-cols-1 gap-4"
         onSubmit={handleSubmit(onSubmit)}

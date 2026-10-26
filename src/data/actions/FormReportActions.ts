@@ -123,6 +123,6 @@ export async function editReportAction(prevState: any, formData: FormData) {
     isSuccess: true,
     apiErrors: null,
     zodErrors: null,
-    message: "UPDATE REPORT DATA SUCCESSFULL!",
+    message: "UPDATE REPORT DATA Successful!",
   };
 }

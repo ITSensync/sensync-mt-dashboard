@@ -49,7 +49,7 @@ export class ReportService {
         if (error.response) {
           const errorResponse = {
             status: error.response.data.status,
-            message: 'Delete Report Successfull!',
+            message: 'Delete Report Successful!',
           };
           return errorResponse;
         } else {
