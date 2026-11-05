@@ -119,6 +119,16 @@ const listBase = [
     site: "Indotaisei",
     img: "",
   },
+  {
+    id: "mini03",
+    site: "Lippo Cikarang 1",
+    img: "",
+  },
+  {
+    id: "mini04",
+    site: "Lippo Cikarang 2",
+    img: "",
+  },
 ];
 
 export default function ChooseDevice() {

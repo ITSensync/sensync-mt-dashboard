@@ -192,6 +192,24 @@ const listSite = [
     address: "",
     img: "",
   },
+  {
+    id: "mini03",
+    type: "aqms_mini",
+    site: "Lippo Cikarang 1",
+    city: "Cikarang",
+    domisili: "",
+    address: "",
+    img: "",
+  },
+  {
+    id: "mini04",
+    type: "aqms_mini",
+    site: "Lippo Cikarang 2",
+    city: "Cikarang",
+    domisili: "",
+    address: "",
+    img: "",
+  },
 ];
 
 export const generateSiteData = (siteId: string) => {
